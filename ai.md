@@ -16,4 +16,45 @@ Fabric is a tool we can get from GitHub that we can use to pipe any text (like a
 
 Fabric is basically a collection of .md files with instructions for the ai how to fufill a task, like: "Think deeply..., Take a step back, think step-by-step about how you will give step 1,2,3...". You are basically talking to it like a human, wierdly enough. You can use the prebuild ones or make your own prompts.
 
-Think about how you will do that with ChatGPT? you go to your browser, load the website, manage through the GUI, maybe load up a conversation with instructions from before, even though it's memory isn't infite from a timeline view... This is a tool to reduce friction.
+Think about how you will do that with ChatGPT? you go to your browser, load the website, manage through the GUI, maybe load up a conversation with instructions from before, even though it's memory isn't infite from a timeline view, if you don't pay 20$ a month you have a limit of how many times a day you can use it... This is a tool to reduce friction. It's a straightforeward CLI native tool. The more you store your ideas and work in text form, the better, like Vim in a way, it's a tool to help you manipulate you knowledge base and ideas from your own little text world. Clone the [repo](https://github.com/danielmiessler/fabric) and install with *pipx*.
+
+===
+
+### Here is a quote from the GitHub page explaining it all
+
+#### Breaking problems into components
+
+Our approach is to break problems into individual pieces (see below) and then apply AI to them one at a time. See below for some examples.
+
+#### Too many prompts
+
+Prompts are good for this, but the biggest challenge I faced in 2023——which still exists today—is the sheer number of AI prompts out there. We all have prompts that are useful, but it's hard to discover new ones, know if they are good or not, and manage different versions of the ones we like.
+
+One of fabric's primary features is helping people collect and integrate prompts, which we call Patterns, into various parts of their lives.
+
+Fabric has Patterns for all sorts of life and work activities, including:
+
+- Extracting the most interesting parts of YouTube videos and podcasts.
+- Writing an essay in your own voice with just an idea as an input.
+- Summarizing opaque academic papers.
+- Creating perfectly matched AI art prompts for a piece of writing.
+- Rating the quality of content to see if you want to read/watch the whole thing.
+- Getting summaries of long, boring content.
+- Explaining code to you.
+- Turning bad documentation into usable documentation.
+- Creating social media posts from any content input.
+- And a million more…
+
+#### Our approach to prompting
+
+Fabric Patterns are different than most prompts you'll see.
+
+- First, we use Markdown to help ensure maximum readability and editability. This not only helps the creator make a good one, but also anyone who wants to deeply understand what it does. Importantly, this also includes the AI you're sending it to!
+
+[Here](https://github.com/danielmiessler/fabric/blob/main/patterns/extract_wisdom/system.md)'s an example of a Fabric Pattern.
+
+- Next, we are extremely clear in our instructions, and we use the Markdown structure to emphasize what we want the AI to do, and in what order.
+
+- And finally, we tend to use the System section of the prompt almost exclusively. In over a year of being heads-down with this stuff, we've just seen more efficacy from doing that. If that changes, or we're shown data that says otherwise, we will adjust.
+
+===
