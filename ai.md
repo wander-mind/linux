@@ -14,3 +14,6 @@ But ChatGPT, Bard, and the other shitbots are not your only options. Welcome to 
 
 Fabric is a tool we can get from GitHub that we can use to pipe any text (like a Youtube transcrypt or a book even), and then feed it to an AI model like Lamma3 to do a well instructed task: like make a proper summary of the text in A format with B stile quotes, C summary, ect. automaticaly. There we have a huge collection of specific prompts that are carefully written out to give proper and exact instruction to the AI, so that it actualy does what we want, in the format that we want.
 
+Fabric is basically a collection of .md files with instructions for the ai how to fufill a task, like: "Think deeply..., Take a step back, think step-by-step about how you will give step 1,2,3...". You are basically talking to it like a human, wierdly enough. You can use the prebuild ones or make your own prompts.
+
+Think about how you will do that with ChatGPT? you go to your browser, load the website, manage through the GUI, maybe load up a conversation with instructions from before, even though it's memory isn't infite from a timeline view... This is a tool to reduce friction.
