@@ -10,3 +10,7 @@ Never the less, it's still some verry interesting and usefull technology that we
 
 But ChatGPT, Bard, and the other shitbots are not your only options. Welcome to the world of local AI on your own local and offline PC. Go to [huggingface.co](https://www,huggingface.co). This is a comunity for providing and sharing AI models. There are a ton of models there: 727 000 for now and growing. Keep this site in mind for later. First we need to download [Ollama](https://www.ollama.ai) from their website. We can use this software to run many of the pretrained models you see listed on huggingface.co, like *llama3*, *llama2-uncensored*, *starcoder2*, *mixtral*, ect.. They also have a list of models to chose, pick and download which one you think you will need. As long as you have a solar panel and your laptop, you can survive in the wild or start civilisation once again. You can also train it with you own data or notes, but I'm not gonna do that for now.
 
+## Fabric
+
+Fabric is a tool we can get from GitHub that we can use to pipe any text (like a Youtube transcrypt or a book even), and then feed it to an AI model like Lamma3 to do a well instructed task: like make a proper summary of the text in A format with B stile quotes, C summary, ect. automaticaly. There we have a huge collection of specific prompts that are carefully written out to give proper and exact instruction to the AI, so that it actualy does what we want, in the format that we want.
+
