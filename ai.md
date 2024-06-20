@@ -18,7 +18,8 @@ Fabric is basically a collection of .md files with instructions for the ai how t
 
 Think about how you will do that with ChatGPT? you go to your browser, load the website, manage through the GUI, maybe load up a conversation with instructions from before, even though it's memory isn't infite from a timeline view, if you don't pay 20$ a month you have a limit of how many times a day you can use it... This is a tool to reduce friction. It's a straightforeward CLI native tool. The more you store your ideas and work in text form, the better, like Vim in a way, it's a tool to help you manipulate you knowledge base and ideas from your own little text world. Clone the [repo](https://github.com/danielmiessler/fabric) and install with *pipx*.
 
-===
+---
+---
 
 ### Here is a quote from the GitHub page explaining it all
 
@@ -57,4 +58,5 @@ Fabric Patterns are different than most prompts you'll see.
 
 - And finally, we tend to use the System section of the prompt almost exclusively. In over a year of being heads-down with this stuff, we've just seen more efficacy from doing that. If that changes, or we're shown data that says otherwise, we will adjust.
 
-===
+---
+---
