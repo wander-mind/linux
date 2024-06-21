@@ -75,4 +75,8 @@ Fabric Patterns are different than most prompts you'll see.
 ---
 ---
 
+### Setup
+
+Now, once we have fabric installed, we need to run `fabric --setup`. It will ask you for your OpenAI and Claude APIs, we might wanna skip those. It will also ask for our YouTube API, go ahead and do that.
+
 🚧 Under Construction!
