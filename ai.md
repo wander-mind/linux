@@ -16,7 +16,7 @@ Microsoft needs these 3 key features in order to run circles around Apple, Meta 
 - They will take screenshots of your screen every couple of seconds and have the highly capable AI analise everything you are doing.
 - They will also keep a timeline of every file you open, every key you press, your clipboard, your mouse clicks, everything...
 
-Not only will they collect and analise this data about you (we all know the information collected is not going to be stores only locally on your PC), but they will also analise their invasiveness 2-way - first with the altered "personalised" data they give you, but also see which of the links you click, how much time it takes for you, what you are looking at exactly, your detailed behaviour, your secrets, it's ALL OVER, never use this crap ppl. In other words - **they will not only have a timeline of what you have done, but a timeline of whats been shown to you, and how you have interacted with it!**
+Not only will they collect and analise this data about you (we all know the information collected is not going to be stores only locally on your PC), but they will also analise their invasiveness 2-way - first with the altered "personalised" data they give you, but also see which of the links you click, how much time it takes for you, what you are looking at exactly, your detailed behaviour, your secrets, it's ALL OVER, never use this crap ppl. In other words - [they will not only have a timeline of what you have done, but a timeline of whats been shown to you, and how you have interacted with it!]
 
 
 
