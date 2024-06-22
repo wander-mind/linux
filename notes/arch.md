@@ -131,7 +131,7 @@ Change threads for compiling software:
 
 ### yay -S:
 
-- mullvad-vpn-bin brave-bin peazip-qt-bin viber vscodium-bin gnubg rubyripper tutanota-desktop-bin bottles drawio-desktop-bin shell-color-scripts downgrade timeshift preload{sudo systemctl enable preload && sudo systemctl start preload} vrms-arch-git
+- mullvad-vpn-bin brave-bin peazip-qt-bin viber vscodium-bin gnubg rubyripper tutanota-desktop-bin bottles drawio-desktop-bin shell-color-scripts downgrade timeshift preload{sudo systemctl enable preload && sudo systemctl start preload} vrms-arch-git classicube-bin
 
 ## After Arch Installation
 
