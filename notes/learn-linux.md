@@ -162,11 +162,13 @@ They are:
 
 Standard output is a place to which a program or command can send information. The information could go to a screen to be displayed, to a file, or even to a printer or other devices.
 
+```
 Standard   -|                    /---> Sdandard Output Monitor
 Input       |     |-----------| /----> Sdandard Output Printer
 (keyboard,  |---->|  Command  |/-----> Sdandard Output File
 file        |     |-----------|\
 command)   -|                   \----> Standard error
+```
 
 ##### Standard Input
 
@@ -294,9 +296,11 @@ $ ls docs &>> output.txt
 
 Pipes are used to redirect a stream from one program to another program. We can take the output of one command and redirect it to the input of another.
 
+```
         |-------------|         |-------------|  /----->
 ()----> |  Command 1  | ------> |  Command 2  | -|
         |-------------|  pipe   |-------------|  \----->
+```
 
 ##### Syntax
 
@@ -431,6 +435,7 @@ In this example, I'm using *cat* to concatenate three files together before pipi
 
 12. What if I wanted to create a file with the output of *cat*?
 
+```
             |=          _________________           ?
  *file1*    |=== cat??  |               |  wc       ?
 |------\    |=======->  |     PIPE      | ---> "6"  ?
@@ -447,6 +452,7 @@ In this example, I'm using *cat* to concatenate three files together before pipi
 |  bye  \   |=-             |animals|   .           ?
 |       |   |=              |bye    |    m          ?
 |-------|   |-              |-------|     d         ?
+```
 
 This is where the **tee** command comes in. The *tee* program reads standard input and copies it both to standard output AND to a file. This allows us to capture information part of the way through a pipeline, without interrupting the flow.
 
@@ -1050,12 +1056,10 @@ $ crontab -l # List all cron jobs
 
 ##### Cron Characters
 
---------------------------------------------|
 0      |4      |8-14   |*/2    |*           |
 --------------------------------------------|
 minute |hour   |day    |month  |day(of week)|
 0-59   |0-23   |1-31   |1-12   |0-6         |
---------------------------------------------|
 
 `*`     Any value           *Value skipped*
 `5,6`   List of values      *5 and 6*
