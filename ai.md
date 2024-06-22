@@ -77,8 +77,8 @@ Fabric Patterns are different than most prompts you'll see.
 
 ### Setup
 
-Now, once we have fabric installed, we need to run `fabric --setup`. It will ask you for your OpenAI and Claude APIs, we might wanna skip those. It will also ask for our YouTube API, go ahead and do that. Now, when you type `fabric --listmodels` you will get a list of your local models. It shows your GPT, google, and Claude models fields empty, but those are pay-as-you-go anyways and privacy invasive as we talked earlier. You can also use models that run on remote computers and servers, but I'm not gonna do that. Another thing, fabric defaults to using ChatGPT, so we can change the default (if we dont want to specify a model EVERY time) with the command `fabric --changeDefaultModel [ModelName]`.
+Now, once we have *fabric* installed, we need to run `fabric --setup`. It will ask you for your OpenAI and Claude APIs, we might wanna skip those. It will also ask for our YouTube API, go ahead and do that. Now, when you type `fabric --listmodels` you will get a list of your local models. It shows your GPT, google, and Claude models fields empty, but those are pay-as-you-go anyways and privacy invasive as we talked earlier. You can also use models that run on remote computers and servers, but I'm not gonna do that. Another thing, *fabric* defaults to using ChatGPT, so we can change the default (if we dont want to specify a model EVERY time) with the command `fabric --changeDefaultModel [ModelName]`.
 
-
+Now, to list all the patterns we have avalable t ouse with *fabric* use `fabric --list`.
 
 🚧 Under Construction!
