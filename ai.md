@@ -77,6 +77,6 @@ Fabric Patterns are different than most prompts you'll see.
 
 ### Setup
 
-Now, once we have fabric installed, we need to run `fabric --setup`. It will ask you for your OpenAI and Claude APIs, we might wanna skip those. It will also ask for our YouTube API, go ahead and do that.
+Now, once we have fabric installed, we need to run `fabric --setup`. It will ask you for your OpenAI and Claude APIs, we might wanna skip those. It will also ask for our YouTube API, go ahead and do that. Now, when you type `fabric --listmodels` you will get a list of your local models. It shows your GPT, google, and Claude models fields empty, but those are pay-as-you-go anyways and privacy invasive as we talked earlier.
 
 🚧 Under Construction!
