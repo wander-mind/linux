@@ -1056,10 +1056,10 @@ $ crontab -l # List all cron jobs
 
 ##### Cron Characters
 
-0      |4      |8-14   |*/2    |*           |
---------------------------------------------|
-minute |hour   |day    |month  |day(of week)|
-0-59   |0-23   |1-31   |1-12   |0-6         |
+|0      |4      |8-14   |*/2    |\*          |
+|-------|-------|-------|-------|------------|
+|minute |hour   |day    |month  |day(of week)|
+|0-59   |0-23   |1-31   |1-12   |0-6         |
 
 `*`     Any value           *Value skipped*
 `5,6`   List of values      *5 and 6*
