@@ -135,13 +135,7 @@ Change threads for compiling software:
 
 ## After Arch Installation
 
-1. Update
-
-```bash
-$ sudo pacman -Syu
-```
-
-2. edit pacman config filelight
+1. edit pacman config filelight
 
 ```bash
 $ sudo vim /etc/pacman.conf
@@ -154,7 +148,7 @@ ILoveCandy
 
 After you save the file, run `sudo pacman -Sy` to activate changes.
 
-3. Update pacman mirror list if you have slow speeds with the fastest servers avalable
+2. Update pacman mirror list if you have slow speeds with the fastest servers avalable
 
 ```bash
 $ sudo pacman -S reflector
