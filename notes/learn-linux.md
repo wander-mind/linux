@@ -4,6 +4,12 @@
 
 ## Command Line
 
+### WanderMinds Common Command List:
+
+|**Command**    |**Description**                                        |**Common Options**                                                         |
+|---------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+|test           |test                                                   |test again                                                                 |
+
 ### Basics
 
 #### Command Structure
