@@ -4,7 +4,7 @@ sudo pacman -S (install) -Ss (search) Si (+package name exact, gives detailed in
 
 ### Main
 
-- git man dosfstools cron htop vim nano fastfetch tldr base-devel go arch-wiki-docs arch-wiki-lite ufw reflector intel-ucode{or amd-ucode} linux-lts linux-lts-headers android-udev android-tools
+- git man dosfstools cron htop vim nano fastfetch tldr base-devel go arch-wiki-docs arch-wiki-lite ufw reflector intel-ucode{or amd-ucode} linux-lts linux-lts-headers android-udev android-tools npm
 
 ### KDE
 
