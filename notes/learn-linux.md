@@ -8,7 +8,10 @@
 
 |**Command**    |**Description**                                        |
 |---------------|-------------------------------------------------------|
-|date           |test                                                   |
+|date           |Print/Set system Date/Time                             |
+|cal            |Callendar                                              |
+|echo           |Display a line of text                                 |
+|sort           |Sort lines of text files                               |
 
 ### Basics
 
@@ -18,20 +21,16 @@
 
 ```bash
 $ command -options arguments
-```
-- date
-- cal
-- echo
-- sort
-
-```bash
-$ sort random_numbers.txt
-1
-5
-7
-9
-11
+# Example:
+$ ls -l /home/yourusername/Documents
+$
+$ sort -nr random_numbers.txt
 15
+11
+9
+7
+5
+1
 ```
 
 #### Long Form Options
