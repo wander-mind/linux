@@ -13,8 +13,8 @@
 |echo           |Display a line of text                                 |
 |sort           |Sort lines of text files                               |
 |ls             |Lists directories                                      |
-|||
-|||
+|type           |Type and location of program                           |
+|which|Find exact location of an executable (not shell or aliases)      |
 |||
 |||
 |||
@@ -81,9 +81,11 @@ cp [OPTION]... SOURCE DEST
 ```
 
 So far, all of the operands we've seen have been optional, but some commands do require certain arguments in order to run. In a man page synopsis, required operands are NOT wrapped in square brackets. In the above synopsis for the copy *cp* command, we see that we can optionally provide one or more options. **SOURCE** indicates that we must pass one source, and **DEST** indicates that we must pass a destination as well. Those two arguments are required.
+
 #### Manual Selections
 
 The manual is broken into 8 different sections, each covering a specific topic in depth:
+
 1. User Commands
 2. System Calls
 3. C Library Functions
@@ -110,22 +112,18 @@ sd_event_get_watchdog (3) - Enable event loop watchdog support
 sd_event_set_watchdog (3) - Enable event loop watchdog support
 sd_watchdog_enabled (3) - Check whether the service manager expects watchdog keep-alive notifications from ...
 wdctl (8)            - show hardware watchdog status
-
 ```
 
 #### Types of Commands
 
-- *type* command
+- The *type* command
 
-    - An executable program, usually stored in */bin*, */usr/bin*, or */usr/local/bin*. These are compiled binary files (hence bin).
+    1. An executable program, usually stored in */bin*, */usr/bin*, or */usr/local/bin*. These are compiled binary files (hence bin).
+    2. A built-in shell command. These commands are part of the shell (bash in our case).
+    3. A shell function.
+    4. An alias.
 
-    - A built-in shell command. These commands are part of the shell (bash in our case).
-
-    - A shell function.
-
-    - An alias.
-
-- which command (find the exact location of an executable, this only works for executables, not built-in shell commands or aliases)
+- The *which* command (find the exact location of an executable, this only works for executables, not built-in shell commands or aliases)
 - help command
 
 #### Navigation
