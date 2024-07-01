@@ -12,6 +12,13 @@
 |cal            |Callendar                                              |
 |echo           |Display a line of text                                 |
 |sort           |Sort lines of text files                               |
+|ls             |Lists directories                                      |
+|||
+|||
+|||
+|||
+|||
+|||
 
 ### Basics
 
@@ -37,19 +44,19 @@ $ sort -nr random_numbers.txt
 
 To use multiple long-form options in a single command, we must write them out separately with their own dashes (--). We cannot combine long-form options in the same way we can with single character options.
 
-- sort -ru random_numbers.txt
-- sort --reverse --unique random_numbers.txt
-- cal -m --months 3 march 1998
+```bash
+$ sort -ru random_numbers.txt
+$ sort --reverse --unique random_numbers.txt
+$ cal -m --months 3 march 1998
+```
 
 #### Man Pages
 
 In general, each man page will follow this pattern:
 
-- The title/name of the command with a short explanation of its purpose.
-
-- Synopsis of the command's syntax.
-
-- Description of the all the command's options.
+1. The title/name of the command with a short explanation of its purpose.
+2. Synopsis of the command's syntax.
+3. Description of the all the command's options.
 
 #### Man Pages Synopsis
 
