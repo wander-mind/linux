@@ -29,52 +29,6 @@ $ perl-rename 'y/A-Z/a-z/' * # Rename all files in a folder to lowercase
 $ perl-rename 'y/ /_/' * # Replace all spaces with underscore
 ```
 
-##### Man Pages Versus Info Pages (DT)
-https://www.youtube.com/watch?v=_SzvpccZqDg
-
-Manuals are at the core of your programs, because they describe all of their possibilities. We have 4 main types of manuals:
-
-1. **man**
-
-**man** pages come from the 70's (first man page is from 1971), and they are the defacto Unix-like-OSes manuals. To view your `man` pages in color, you can open them with `neovim`. To do so, add this line to the *.bashrc*:
-
-> export MANPAGER="nvim + Man!
-
-Don't forget to source your .bashrc after saving!
-
-```bash
-$ source ~/.bashrc
-$ man man
-$ man ls
-```
-
-2. **info**
-
-**info** pages are from the *GNU* project, all the GNU utils have info pages. Lots of other programs also have info pages, but some of them just copy the *man* pages there. To get started and learning about the info pages just write "info", and you will be taken to the home page. They have hyperlinks.
-
-```bash
-$ info
-$ info cp
-```
-
-3. **help**
-
-To get only a shortened version of the *man* pages for programs, mainly just the options, use the **--help** flag:
-
-```bash
-$ find --help
-```
-
-4. **tldr**
-
-Gives a small list of 5-10 most used options for a program, and their description. Not many programs have them.
-
-```bash
-$ tldr
-$ tldr rm
-$ tldr find
-```
-
 ##### Shell-Color-Scripts And Dmscripts!
 
 ```bash

@@ -4,21 +4,24 @@
 
 ## Command Line
 
-### WanderMinds Common Command List:
+### wander-minds Common Command List:
 
-|**Command**    |**Description**                                        |
-|---------------|-------------------------------------------------------|
-|date           |Print/Set system Date/Time                             |
-|cal            |Callendar                                              |
-|echo           |Display a line of text                                 |
-|sort           |Sort lines of text files                               |
-|ls             |Lists directories                                      |
-|type           |Type and location of program                           |
-|which|Find exact location of an executable (not shell or aliases)      |
-|||
-|||
-|||
-|||
+|--*Basics*--   |**Description**                                            |
+|---------------|-----------------------------------------------------------|
+|date           |Print/Set system Date/Time                                 |
+|cal            |Callendar                                                  |
+|echo           |Display a line of text                                     |
+|sort           |Sort lines of text files                                   |
+|ls             |Lists directories                                          |
+|type           |Type and location of program                               |
+|which          |Find exact location of executable (not shell or aliases)   |
+
+|--**Manuals**--|**Description**                                            |
+|---------------|-----------------------------------------------------------|
+|man            |Defacto Unix manuals                                       |
+|info           |GNU manuals                                                |
+|--help (-h)    |Short version of *man* pages                               |
+|tldr           |5-10 most used options                                     |
 
 ### Basics
 
@@ -52,13 +55,19 @@ $ cal -m --months 3 march 1998
 
 #### Man Pages
 
+Manuals are at the core of your programs, because they describe all of their possibilities. We have 4 main types of manuals:
+
+##### **man**
+
 In general, each man page will follow this pattern:
 
 1. The title/name of the command with a short explanation of its purpose.
 2. Synopsis of the command's syntax.
 3. Description of the all the command's options.
 
-#### Man Pages Synopsis
+**man** pages come from the 70's (first man page is from 1971), and they are the defacto Unix-like-OSes manuals.
+
+###### Man Pages Synopsis
 
 ```bash
 $ man echo
@@ -82,7 +91,7 @@ cp [OPTION]... SOURCE DEST
 
 So far, all of the operands we've seen have been optional, but some commands do require certain arguments in order to run. In a man page synopsis, required operands are NOT wrapped in square brackets. In the above synopsis for the copy *cp* command, we see that we can optionally provide one or more options. **SOURCE** indicates that we must pass one source, and **DEST** indicates that we must pass a destination as well. Those two arguments are required.
 
-#### Manual Selections
+###### Manual Selections
 
 The manual is broken into 8 different sections, each covering a specific topic in depth:
 
@@ -95,13 +104,7 @@ The manual is broken into 8 different sections, each covering a specific topic i
 7. Miscellaneous
 8. System admin commands
 
-For example:
-
-```bash
-$ man 1 sort
-```
-
-#### Searching the Manual
+###### Searching the Manual
 
 We can search for a term within the manual using the *-k* option. For example, to search the manual for "dog" we would run *man -k dog*.
 
@@ -112,6 +115,33 @@ sd_event_get_watchdog (3) - Enable event loop watchdog support
 sd_event_set_watchdog (3) - Enable event loop watchdog support
 sd_watchdog_enabled (3) - Check whether the service manager expects watchdog keep-alive notifications from ...
 wdctl (8)            - show hardware watchdog status
+```
+
+##### **info**
+
+**info** pages are from the *GNU* project, all the GNU utils have info pages. Lots of other programs also have info pages, but some of them just copy the *man* pages there. To get started and learning about the info pages just write "info", and you will be taken to the home page. They have hyperlinks.
+
+```bash
+$ info
+$ info cp
+```
+
+##### **help**
+
+To get only a shortened version of the *man* pages for programs, mainly just the options, use the **--help** flag:
+
+```bash
+$ find --help
+```
+
+##### **tldr**
+
+Gives a small list of 5-10 most used options for a program, and their description. Not many programs have them.
+
+```bash
+$ tldr
+$ tldr rm
+$ tldr find
 ```
 
 #### Types of Commands
