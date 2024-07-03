@@ -39,6 +39,7 @@ $ git push origin main                  # Push Changes to GitHub
 ```
 
 ### Pulling Changes:
+
 ```bash
 $ git pull origin main # Replace `main` with the branch you are working on.
 ```
@@ -52,6 +53,7 @@ If you want to pull changes from the remote repository and include files that ar
 ```bash
 $ git clean -dfX
 ```
+
 - `-d`: Allow removal of directories.
 - `-f`: Force the clean operation.
 - `-X`: Only clean files that are listed in `.gitignore`.
