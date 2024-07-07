@@ -8,7 +8,7 @@ sudo pacman -S (install) -Ss (search) Si (+package name exact, gives detailed in
 
 ### KDE
 
-- kcalc gwenview partitionmanager kdenlive okular spectacle kdeconnect filelight kfind kcolorchooser yakuake kolourpaint kcharselect kmines akregator konversation ktouch kclock kmahjongg ksudoku
+- kcalc gwenview partitionmanager kdenlive okular spectacle kdeconnect filelight kfind kcolorchooser yakuake kolourpaint kcharselect kmines akregator konversation ktouch kclock kmahjongg ksudoku merkuro
 
 ### Gnome
 
