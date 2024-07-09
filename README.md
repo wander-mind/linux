@@ -1,4 +1,4 @@
-# Welcome to Wander Mind's Linux Repo! 🐧
+# Welcome to Wander-Mind's Linux Repo! 🐧
 
 ## About This Repository
 👋 Hello, I'm **Wander Mind**, and this is my dedicated space for documenting my Linux journey. Here, you'll find my notes, configurations, scripts, and everything I've learned about Linux.
