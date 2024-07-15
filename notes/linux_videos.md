@@ -1283,3 +1283,8 @@ https://www.youtube.com/watch?v=DM65_JyGxCo
 
 - Docker networking is CRAZY!! (you NEED to learn it)
 https://www.youtube.com/watch?v=bKFMS5C4CG0
+
+## Others
+
+- Tmux has forever changed the way I write code.
+https://www.youtube.com/watch?v=DzNmUNvnB04
