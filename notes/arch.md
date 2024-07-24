@@ -20,7 +20,7 @@ sudo pacman -S (install) -Ss (search) Si (+package name exact, gives detailed in
 
 ### Other
 
-- cmatrix neovim alacritty virtualbox dkms linux-headers qbittorrent mpv keepassxc libreoffice calibre gimp signal-desktop picard mkvtoolnix-gui mediainfo-gui retroarch steam 0ad ffmpegthumbs kitty yt-dlp power-profiles-daemon cdrdao telegram-desktop handbrake perl-rename dotnet-sdk veracrypt brasero p7zip unrar tar rsync exfat-utils fuse-exfat ntfs-3g flac curl wget jdk-openjdk awesome thunderbird
+- cmatrix neovim alacritty virtualbox dkms linux-headers qbittorrent mpv keepassxc libreoffice calibre gimp signal-desktop picard mkvtoolnix-gui mediainfo-gui retroarch steam 0ad ffmpegthumbs kitty yt-dlp power-profiles-daemon cdrdao telegram-desktop handbrake perl-rename dotnet-sdk veracrypt brasero p7zip unrar tar rsync exfat-utils fuse-exfat ntfs-3g flac curl wget jdk-openjdk awesome thunderbird electrum
 
 ### Bluetooth
 
