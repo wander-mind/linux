@@ -367,12 +367,6 @@ https://www.youtube.com/watch?v=ux1SP9B5lSQ
 
 4. VIM
 
-- Why No One Can Answer The "Vim Versus Emacs" Question
-https://www.youtube.com/watch?v=scBBjZcy6fc
-
-- The Absolute Basics of Vim (It's Not THAT Hard!)
-https://www.youtube.com/watch?v=9wyIECjwAio
-
 - Vim Can Save You Hours Of Work
 https://www.youtube.com/watch?v=bshMXXX40_4
 
