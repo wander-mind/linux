@@ -35,3 +35,11 @@ Change:
 
 - Menu of the core updater:
 > menu_show_core_updater = "false"                  ->      menu_show_core_updater = "true"
+
+## In **RetroArch**
+
+- Update assets so yhe programs thumbnails show properly:
+> Online Updater -> Update Asets
+
+- Change the theme to the PS3 one:
+> Settings -> Drivers -> Menu -> xmb
