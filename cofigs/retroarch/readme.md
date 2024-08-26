@@ -20,6 +20,18 @@ Once you first install *RetroArch* you will get a couple of errors and it will l
 ## In **~/.config/retroarch/retroarch.cfg**:
 
 Change:
-```
-assets_directory = "/usr/share/retroarch/assets"        ->      assets_directory = "~/.config/retroarch/assets"
-core_updater_show_experimental_cores = "false"          ->      core_updater_show_experimental_cores = "true"
+
+- Changing assets from global to local:
+> assets_directory = "/usr/share/retroarch/assets"  ->      assets_directory = "~/.config/retroarch/assets"
+
+- So that we can see the cores when we update:
+> core_updater_show_experimental_cores = "false"    ->      core_updater_show_experimental_cores = "true"
+
+- The directory where the cores will be in:
+> libretro_directory = "/usr/lib/libretro"          ->      libretro_directory = "~/.config/retroarch/cores"
+
+- Information about the downloaded cores:
+> libretro_info_path = "/usr/share/libretro/info"   ->      libretro_info_path = "~/.config/retroarch/cores/info"
+
+- Menu of the core updater:
+> menu_show_core_updater = "false"                  ->      menu_show_core_updater = "true"
