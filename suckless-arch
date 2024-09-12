@@ -232,12 +232,12 @@ exec dwm
 
 3. ```sudo systemctl enable bluetooth.service```
 
-    ,----------------------------------------------------------,
-   / This enables the Bluetooth service to start automatically  \
-  ||    on boot. It ensures that the bluetooth.service is       ||
-  ||  always running when your system starts, without needing   ||
-   \             to manuall start it each time.                 /
-    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+     ,----------------------------------------------------------,
+    / This enables the Bluetooth service to start automatically  \
+   ||    on boot. It ensures that the bluetooth.service is       ||
+   ||  always running when your system starts, without needing   ||
+    \             to manuall start it each time.                 /
+     \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
 
 ~~~~~~~~~??.AI-(OLAMA)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
