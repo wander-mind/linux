@@ -1,0 +1,286 @@
+########################################################################
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+#:.       ██╗    ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██████╗        .:#
+#:.       ██║    ██║██╔══██╗████╗  ██║██╔══██╗██╔════╝██╔══██╗       .:#
+#:.       ██║ █╗ ██║███████║██╔██╗ ██║██║  ██║█████╗  ██████╔╝       .:#
+#:.       ██║███╗██║██╔══██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗       .:#
+#:.       ╚███╔███╔╝██║  ██║██║ ╚████║██████╔╝███████╗██║  ██║       .:#
+#:.        ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝       .:#
+#:.                                                                  .:#
+#:.       ███╗   ███╗██╗███╗   ██╗██████╗    E-Mail: w.m@tuta.com    .:#
+#:.       ████╗ ████║██║████╗  ██║██╔══██╗                           .:#
+#:.       ██╔████╔██║██║██╔██╗ ██║██║  ██║   GitHub: github.com/     .:#
+#:.       ██║╚██╔╝██║██║██║╚██╗██║██║  ██║              wander-mind  .:#
+#:.       ██║ ╚═╝ ██║██║██║ ╚████║██████╔╝                           .:#
+#:.       ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═════╝      Site: wandermind.xyz  .:#
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+########################################################################
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Arch-Linux prep ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here I will explain how I configure my Arch-Linux system from scratch.
+I already know how to install my system manualy, but I still prefer to
+make a minimal install with the ```archinstall``` script. I like add
+swap, encrypt my drive, use btrfs, enable multylib, and use a minimal
+install.
+   Then:
+~~~~~~~~~1.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$ sudo pacman -S ...
+          * base-devel    # Includes GCC, make, and
+                          # other useful build tools
+
+          * linux-headers # are essential for building
+                          # and compiling kernel modules,
+            # device drivers, and some user programs that
+            # interface with the Linux kernel. Some Arch
+            # packages, such as "nvidia" or "virtualbox",
+            # rely on "linux-headers" to function properly.
+            # These packages require the header files to
+            # compile and install their own kernel modules.
+
+          * intel-ucode   # contains updated CPU microcode
+          *   amd-ucode   # from Intel and AMD. Microcode is
+                          # a type of firmware that resides
+                          # in the CPU and controls various
+                          # low-level CPU operations.
+
+          * xorg    # You can download individual x.org
+                    # packages for a bit more security
+                    # and to reduce bloat, but I prefer
+                    # the full x.org packages
+
+          * dosfstools    # A collection of utilities for
+                          # creating, checking, and labeling
+                          # MS-DOS FAT filesystems on Linux
+
+          * git     # Git... we need it
+
+          * man     # Installed program manuals interface
+          * tldr    # Other helpful program manuals
+
+          * htop btop     # CLI task managers, and
+                          # system process managers
+
+          * python  # Python programming language
+          * npm     # JavaScript package manager
+
+          * vim neovim    # Best text editors ever!
+
+          * alacritty     # It's good to have 2 terminal
+                          # emulators, this will be one
+
+          * ufw     # {Firewall} provides a simple and easy-to-use
+                    # command-line interface for managing "netfilter",
+                    # a packet filtering system in the Linux kernel.
+
+          * mpv vlc # The best media players
+
+          * fastfetch     # System information, like
+                          # "neofetch", but better
+
+~~~~~~~~~1.1.SECONDARY-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          * arch-wiki-docs    # Ofline archwiki html
+          * arch-wiki-lite    # Ofline archwiki txt
+
+          * android-udev  # Provides udev rules for Android devices
+                          # to be recognized properly by the system
+                          # when connected via USB.
+
+          * android-tools # A collection of command-line utilities
+                          # for Android development, such as adb
+                          # (Android Debug Bridge) and fastboot.
+
+~~~~~~~~~2.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Make sure you have xorg-xinit installed (because we need to install
+   in order to have our '.xinitrc' file working, and to able to start our
+   graphical environment with the "startx" command).
+
+2. Asuming you haven't installed any other shell, you should have a
+   '.bash_profile' file in your home folder. We are going to add an 'IF'
+   statement, that automatically starts X if no other graphical server
+   is loaded:
+        \ IN .bash_profile ADD: /
+         =======================
+```bash
+# Automatically start X (via startx) when logging into tty1, but only if no X session is running
+# - The first condition checks if the DISPLAY variable is unset, meaning no graphical session is active.
+# - The second condition ensures this only happens on tty1 (XDG_VTNR = 1), so it doesn't interfere with other terminals.
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec startx
+fi
+```
+
+3. We need to create our '.xinitrc' file in our home folder, and paste
+   this content with the explanations:
+        \ IN .xinitrc ADD: /
+         ==================
+```bash
+# .xinitrc - Configuration file for starting X sessions with `startx`
+# This file is executed by `startx` when starting an X session.
+
+# ---- SCREEN LAYOUT (OPTIONAL) ----
+# If you want to set a specific screen resolution or layout, you can use `xrandr`.
+# Example: Set your screen resolution to 1920x1080. You can adjust this based on your monitor setup.
+# This is especially useful for high-resolution displays (e.g., 4K), where you might need scaling.
+# You can check available resolutions with the command: xrandr
+
+# Basic syntax:
+# xrandr --output <output-device> --mode <resolution> --scale <scaling-factor>
+
+# xrandr --output <your-output-device> --mode <resolution>
+# xrandr --output HDMI-1 --mode 1920x1080
+
+# To find available display resolutions and output names, run `xrandr` in your terminal.
+
+# Example:
+# Run `xrandr` and you'll see something like:
+# HDMI-1 connected primary 3840x2160+0+0 (normal left inverted right x axis y axis) 598mm x 336mm
+# This means your output device is HDMI-1 and your screen resolution is 3840x2160 (4K).
+
+# ---- SCREEN SCALING (ZOOM) ----
+# On 4K monitors (3840x2160), you may want to scale things up for readability.
+# Here's how scaling works for different zoom levels:
+
+# 1x Scaling (No zoom, native resolution)
+# This is the default, where no scaling is applied.
+# xrandr --output HDMI-1 --mode 3840x2160 --scale 1x1
+
+# 2x Scaling (for 4K displays to look like 1080p)
+# This scales everything by 2x, making UI elements bigger (useful on high-DPI displays).
+# This makes a 3840x2160 (4K) display behave like 1920x1080 in terms of UI size.
+xrandr --output HDMI-1 --mode 3840x2160 --scale 0.5x0.5
+
+# 3x Scaling (makes UI elements even larger)
+# This would make the screen behave like a resolution close to 1280x720 (3x zoom).
+xrandr --output HDMI-1 --mode 3840x2160 --scale 0.33x0.33
+
+# Note: The lower the scale factor, the larger the UI elements appear. Adjust based on preference.
+
+# ---- DUAL MONITORS (OPTIONAL) ----
+# If you are using multiple monitors, you can position them relative to each other.
+# Example: Position a second monitor (DP-1) to the right of your main HDMI-1 monitor:
+# xrandr --output HDMI-1 --mode 3840x2160 --scale 0.5x0.5 --primary --output DP-1 --mode 1920x1080 --right-of HDMI-1
+
+# ---- KEYBOARD LAYOUT (OPTIONAL) ----
+# To set the keyboard layout, use the `setxkbmap` command.
+# You can list available keyboard layouts using: localectl list-keymaps
+# Replace "us" with your preferred layout (e.g., "de" for German, "fr" for French, "es" for Spanish)
+setxkbmap us  # Set the keyboard layout to US English
+
+# ---- AUTOSTART PROGRAMS ----
+# You can autostart programs by adding them before the window manager starts.
+# Make sure to add an ampersand (&) after each program to run them in the background.
+
+# Example: Start the network manager applet in the background
+nm-applet &
+
+# Example: Set your wallpaper using `feh` (replace with your image path)
+feh --bg-scale /path/to/your/wallpaper.jpg &
+
+# Example: Start a compositor like picom (for transparency and shadow effects)
+# You can install picom with: sudo pacman -S picom
+picom &
+
+# ---- START YOUR WINDOW MANAGER ----
+# This is the last command in the file, and it starts your window manager.
+# It must be the last line because X will terminate once this command finishes.
+# Only one window manager should be started here.
+
+# Example for dwm (Dynamic Window Manager):
+exec dwm
+
+# Example for i3 (Tiling Window Manager):
+# exec i3
+
+# Example for Openbox (Stacking Window Manager):
+# exec openbox-session
+
+# Example for xfce4 (A lightweight desktop environment):
+# exec startxfce4
+```
+~~~~~~~~~3.NETWORK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+~~~~~~~~~4.BLUETOOTH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. ```sudo pacman -S bluez bluez-utils blueman```
+
+-==This installs three packages:==-
+     * bluez  # This is the official Bluetooth protocol stack for Linux.
+              # It provides the necessary software to enable Bluetooth
+              # communication.
+
+     * bluez-utils  # This includes additional utilities for interacting
+                    # with Bluetooth devices, like "bluetoothctl", which
+                    # allows you to pair, connect, and manage Bluetooth
+                    # devices via the command line.
+
+     * blueman  # This is a GUI tool for managing BT connections.
+                # It provides an easy way to connect to
+                # and manage Bluetooth devices from the desktop.
+
+2. ```sudo systemctl start bluetooth.service```
+  ____________________________________________________________________
+ // This command starts the Bluetooth service on your system for the \\
+ \\ current session. It launches the bluetooth.service so that your  //
+ // system can begin discovering and connecting to Bluetooth devices.\\
+ \\__________________________________________________________________//
+
+3. ```sudo systemctl enable bluetooth.service```
+
+    ,----------------------------------------------------------,
+   / This enables the Bluetooth service to start automatically  \
+  ||    on boot. It ensures that the bluetooth.service is       ||
+  ||  always running when your system starts, without needing   ||
+   \             to manuall start it each time.                 /
+    \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+
+~~~~~~~~~??.AI-(OLAMA)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Get ollama to run LLM's
+               ---------------------------------------------
+         ```   curl -fsSL https://ollama.com/install.sh | sh   ```
+               ---------------------------------------------
+
+               The bin is located in: "/usr/local/bin/ollama"
+               (this is if you want to delete the program, because
+               when you curl, you bypass the package manager).
+
+            1. Here's a general guideline on how to uninstall it:
+
+                          +        Delete the Ollama binary:
+                                   Use the rm command to remove the
+                                   Ollama binary. For example:
+
+            :::           **       ```bash
+          :+: :+:                  sudo rm /usr/local/bin/ollama
+         +:+   +:+                 ```
+        +#++:++#++:
+        +#+     +#+       +        If the script created a systemd
+        #+#     #+#                service, disable and remove it:
+        ###     ###         If the script created a systemd service
+                            for Ollama, you should disable and
+                            remove it using the following commands:
+
+        :::::::::::       **  ```bash
+            :+:               sudo systemctl stop ollama
+            +:+               sudo systemctl disable ollama
+            +#+               sudo rm /etc/systemd/system/ollama.service
+            +#+               sudo systemctl daemon-reload
+            #+#               ```
+        ###########
+                          +         Remove any created user and group
+                                    (if applicable):
+                             The script might have created a user and
+                             group named "ollama." You can remove them
+                             using the following commands:
+
+                          **  ```bash
+                              sudo userdel ollama
+                              sudo groupdel ollama
+                              ```
