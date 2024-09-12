@@ -504,3 +504,168 @@ $ command1 | command2
     $ cat file1 file2 file3 | tee combo.md | wc -w
     $ ls -l /usr/bin | tee allfiles.txt | less
     ```
+
+## 7 - Wildcard Characters (aka globbing patterns)
+
+We can use special wildcard characters to build patterns that can match multiple filenames at once.
+
+### 7.1 - The * Wildcard
+
+The asterisk __*__ character represents zero or more characters in a filename. For example:
+
+- __ls *.html__ will match any files that end with .html like index.html and navbar.html.
+- __cat blue*__ will match any files that start with "blue" like "blue.html" or "bluesteel.js".
+
+### 7.2 - The ? Wildcard
+
+The question mark __?__ character represents any **single** character.
+
+- __ls app.??__ will match any files named "app" that end with two character file extensions like "app.js" or "app.py" but NOT "app.css".
+- __ls pic?.png__ will match pic1.png, pic2.png, pic3.png, but also picA.png, or picx.png.
+
+### 7.3 - Range Wildcards
+
+Inside of square brackets **[ ]** we can specify a range of characters to match.
+
+- **ls pic[123].png** will only match pic1.png, pic2.png, and pic3.png.
+- **ls file[0-9]** will match file1, file2, file3, up to file9.
+- __ls [A-F]*__ will match any files that begin with a capital A, B, C, D, E, or F.
+
+### 7.4 - Negating Ranges
+
+Inside of square brackets **[ ]** we can specify a range of characters to NOT match, using a caret **^**.
+
+- __ls [^a]*__ will match any files that do NOT start with "a".
+- __ls [^0-9]*__ will match any files that do NOT start with a numeric digit (0-9).
+
+### 7.5 - Character Classes
+
+[:alpha:] - alphabetic characters, upper and lower
+[:digit:] - digits 0-9
+[:lower:] - lower case letters
+[:upper:] - upper case letters
+[:blank:] - blank characters: space and tab
+[:punct:] - punctuation characters
+[:alnum:] - alphanumeric characters (alpha + digit)
+
+```bash
+$ echo [[:upper:]]* #Any file that starts with uppercase letter
+```
+
+## 8 - Brace Expansion
+
+Brace expansion is used to generate arbitrary strings. Basically, it will generate multiple strings for us based on a pattern. We provide a set of strings inside of curly braces **{ }**, as well as optional surrounding prefixes and suffixes. The specified strings are used to generate all possible combinations with the optional prefixes and suffixes. For example:
+
+- This will generate three new files: 'page1.txt', 'page2.txt', and 'page3.txt'.
+
+    ```bash
+    $ touch page{1,2,3}.txt
+    ```
+
+### 8.1 - Ranges
+
+1. We can provide a numeric range, which will be used to generate a sequence. In this example, **jan{1..31}** will be expanded to jan1, jan2, jan3, etc. until jan31.
+
+    ```bash
+    $ mkdir jan{1..31}
+    ```
+
+---
+
+2. We can provide a third value which defines the interval for the range. In this example, **echo {2..10..2}** will print out the numbers 2, 4, 6, 8, and 10.
+
+    ```bash
+    $ echo {2..10..2}
+    ```
+
+---
+
+3. We can even specify alphabetical ranges. This example generates the files group-a.txt, group-b.txt, group-c.txt, group-d.txt, and group-e.txt
+
+    ```bash
+    $ touch group-{a..e}.txt
+    ```
+
+4. We can conbine multiple ranges and go over every conbination.
+
+    ```bash
+    $ echo {a,b,c}{1,2,3} # Prints a1 a2 a3 b1 b2 b3 c1 c2 c3
+    $ echo {b,r}{eef,at,ag} # Prints beef bat bag reef rat rag
+    ```
+
+5. We can also use **nested brace expansions**.
+
+    ```bash
+    $  echo {x,y{1..5},z} # Prints x y1 y2 y3 y4 y5 z
+    ```
+
+## 9 - Arithmetic Expansion
+
+The shell will perform arithmetic via expansion using the **$((expression))** syntax. inside the parentheses, we can wright artithmetic expressions using:
+
+1. Addition **+**
+2. Subtraction **-**
+3. Multiplication __*__
+4. Division **/**
+5. Exponentiation __**__
+6. Modulo (remainder operator) **%**
+
+- The shell **only performs integer arithmetic**, so the result is always a whole number.
+
+```bash
+$ $((expression))
+$ $((11+7)) # 18
+$ $((2*12)) # 24
+$ $((36%7)) # 1
+```
+
+## 10 - Command Substitution
+
+We can use the **$(command)** syntax to display the output of another command, for example:
+
+```bash
+$ echo "today is $(date)" # Today is Thu May  9 12:09:18 EEST 2024
+```
+
+##### Quoting
+
+In this example, our large whitespace is ignored because the shell performs something called word splitting.
+
+```bash
+$ echo look at          me # Prints look at me
+```
+
+In this example, we only see "holy" printed out because the shell thinks we are referencing a *variable called hit*. It can't find a value for hit, so it substitutes an empty string instead.
+
+```bash
+$ echo holy $hit # Prints holy
+```
+
+###### Double Quotes
+
+If we wrap text in double quotes, the shell will respect our spacing and will ignore special characters except for **$**, **\**, and **`**.
+
+Pathname expansion, brace expansion, and word splitting will be ignored. However, command substitution and arithmetic expansion is still performed because dollar signs still have meaning inside double quotes.
+
+```bash
+$ echo look at        me # Prints look at        me
+$ echo "{1...9"} # Prints {1...9}
+```
+
+###### Single Quotes
+
+Use single quotes to suppress all forms of substitution.
+
+```bash
+$ echo "$((2+2)) is 4" # Prints 4 is 4
+$ echo '$((2+2)) is 4' # Prints $((2+2)) is 4
+```
+
+###### Escaping
+
+To selectively prevent expansion or substitution for specific characters, we can prefix them with a single backslash. We can use this to reference special characters that normally have meanings inside of filenames.
+
+```bash
+$ echo "$5.00" # Prints .00
+$ echo "\$5.00" # Prints $5.00
+```
