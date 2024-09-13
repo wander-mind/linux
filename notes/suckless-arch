@@ -16,15 +16,49 @@
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
 ########################################################################
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Arch-Linux prep ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ Arch-Linux prep ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
 
 Here I will explain how I configure my Arch-Linux system from scratch.
 I already know how to install my system manualy, but I still prefer to
 make a minimal install with the ```archinstall``` script. I like add
 swap, encrypt my drive, use btrfs, enable multylib, and use a minimal
 install.
-   Then:
-~~~~~~~~~1.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Then:
+~~~~~~~~~1.TTY-FONTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You may not like the look       MMP""MM""YMM MMP""MM""YMM `YMM'   `MM'
+and size of the font in the     P'   MM   `7 P'   MM   `7   VMA   ,V
+TTY, while you're configuring        MM           MM         VMA ,V
+arch lets say. So here is how        MM           MM          VMMP
+we can go about this:                MM           MM           MM
+                                     MM           MM           MM
+1. If you want to print &          .JMML.       .JMML.       .JMML.
+view the current fonts          ____    ____      _  _    ____    ___
+character set - use            F ___J  F __ ]    F L L]  /_  _\  F __".
+```showconsolefont```.        J |___: J |--| L  J   \| L [J  L] J (___|
+                              | _____|| |  | |  | |\   |  |  |  J\___ \
+2. Next we are going to       F |____JF L__J J  F L\\  J  F  J .--___) \
+change our font, but         J__F    J\______/FJ__L \\__LJ____LJ\______J
+first we need to search      |__|     J______F |__L  J__||____| J______F
+through our avalable ones:
+```cd /usr/share/kbd/consolefonts/```. If we "ls" here, we will see a
+list of all avalable tty fonts. We set our font with the command:
+```setfont {font.name}```, but this is temporary, if we reboot the
+system the font will reset.
+
+3. We can install extra fonts here, for example the 'terminus' font by:
+```sudo pacman -Syu terminus-font```. Now if we list the directory we
+will see a bunch of new fonts. You can install other packs too.
+
+4. In order to make our new font choice pernament, we need to create a
+new config file: ```sudo vim /etc/vconsole.conf```. In there we can add:
+
+```/etc/vconsole.conf
+FONT={font.name}
+```
+~~~~~~~~~2.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $ sudo pacman -S ...
           * base-devel    # Includes GCC, make, and
                           # other useful build tools
@@ -78,7 +112,7 @@ $ sudo pacman -S ...
           * fastfetch     # System information, like
                           # "neofetch", but better
 
-~~~~~~~~~1.1.SECONDARY-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~2.1.SECONDARY-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           * arch-wiki-docs    # Ofline archwiki html
           * arch-wiki-lite    # Ofline archwiki txt
@@ -91,7 +125,7 @@ $ sudo pacman -S ...
                           # for Android development, such as adb
                           # (Android Debug Bridge) and fastboot.
 
-~~~~~~~~~2.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~3.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. Make sure you have xorg-xinit installed (because we need to install
    in order to have our '.xinitrc' file working, and to able to start our
    graphical environment with the "startx" command).
