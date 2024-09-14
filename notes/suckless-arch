@@ -125,7 +125,22 @@ $ sudo pacman -S ...
                           # for Android development, such as adb
                           # (Android Debug Bridge) and fastboot.
 
-~~~~~~~~~3.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+mkdir suckless
+cd suckless
+git clone https://git.suckless.org/dwm
+git clone https://git.suckless.org/dmenu
+git clone https://git.suckless.org/st
+cd dwm
+sudo make clean install
+cd ../st
+sudo make clean install
+cd ../dmenu
+sudo make clean install
+
+~~~~~~~~~4.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 1. Make sure you have xorg-xinit installed (because we need to install
    in order to have our '.xinitrc' file working, and to able to start our
    graphical environment with the "startx" command).
@@ -134,6 +149,7 @@ $ sudo pacman -S ...
    '.bash_profile' file in your home folder. We are going to add an 'IF'
    statement, that automatically starts X if no other graphical server
    is loaded:
+
         \ IN .bash_profile ADD: /
          =======================
 ```bash
@@ -147,6 +163,7 @@ fi
 
 3. We need to create our '.xinitrc' file in our home folder, and paste
    this content with the explanations:
+
         \ IN .xinitrc ADD: /
          ==================
 ```bash
@@ -320,16 +337,3 @@ exec dwm
                               ```
 
 
-
-~~~~~~~~~???.SUCKLEESSS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-mkdir suckless
-cd suckless
-git clone https://git.suckless.org/dwm
-git clone https://git.suckless.org/dmenu
-git clone https://git.suckless.org/st
-cd dwm
-sudo make clean install
-cd ../st
-sudo make clean install
-cd ../dmenu
-sudo make clean install
