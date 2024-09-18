@@ -32,3 +32,6 @@ PS1='[\u@\h \W]\$ '
 # Created by `pipx` on 2024-06-21 06:18:55
 export PATH="$PATH:/home/nomadic/.local/bin"
 if [ -f "/home/nomadic/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/nomadic/.config/fabric/fabric-bootstrap.inc"; fi
+
+#ALIASES
+alias 720p='yt-dlp -f "bestvideo[height<=1280]+bestaudio/best[height<=1280]" https://www.youtube.com/watch?v='
