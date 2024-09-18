@@ -22,7 +22,7 @@
 
 Here I will explain how I configure my Arch-Linux system from scratch.
 I already know how to install my system manualy, but I still prefer to
-make a minimal install with the ```archinstall``` script. I like add
+make a minimal install with the ```archinstall``` script. I like to add
 swap, encrypt my drive, use btrfs, enable multylib, and use a minimal
 install.
      Then:
@@ -187,12 +187,15 @@ preload{sudo systemctl enable preload && sudo systemctl start preload}
 2. Update pacman mirror list !IF! you have slow speeds with the fastest
    servers avalable:
 
-````````````````````````````````````````````````````````````````````````
+```bash
 $ sudo pacman -S reflector
-$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak # Backup the default mirror list
-$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist # Run this command to fetch the fastest 10 servers and add them to the mirror list
+# -- Backup the default mirror list:
+$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# -- Run this command to fetch the fastest 10 servers
+#    and add them to the mirror list:
+$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 $ sudo pacman -Sy
-````````````````````````````````````````````````````````````````````````
+```
 ~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 mkdir suckless
