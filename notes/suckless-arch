@@ -127,6 +127,52 @@ $ sudo pacman -S ...
 
 ~~~~~~~~~2.2.YAY(AUR)-SETUP-&-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+1. Change threads for compiling software faster:
+  - sudo vim /etc/makepkg.conf >>> MAKEFLAGS="-j№№"
+
+                    # Number of threads to use when compiling, usualy
+                      set to that num - 2 (for example 12 threads -j10).
+
+2. Build YAY
+  - git clone htttps://aur.archlinux.org/yay.git
+  - cd yay
+  - makepkg
+  - sudo pacman -U yay-12.3...x86_64.pkg.tar.zst
+
+3. Software:
+
+  mullvad-vpn-bin              brave-bin          peazip-qt-bin
+      viber                      gnubg              rubyripper
+tutanota-desktop-bin            bottles         drawio-desktop-bin
+shell-color-scripts            downgrade            timeshift
+   vrms-arch-git              balena-etcher       librewolf-bin
+
+preload{sudo systemctl enable preload && sudo systemctl start preload}
+
+~~~~~~~~~2.4-ARCH-IMPROVING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                  ######################################################
+                  #  /----------------------------------------------\  #
+1. Edit           # /   $ sudo vim /etc/pacman.conf                  \ #
+   pacman         #|    # Uncomment these lines:                      |#
+   config:        #|    Color                                         |#
+                  #|    ParallelDownloads = 4                         |#
+                  #|    # Add this line to add the Pacman animation:  |#
+                  # \   ILoveCandy                                   / #
+                  #  \----------------------------------------------/  #
+                  ######################################################
+
+After you save the file, run `sudo pacman -Sy` to activate changes.
+
+- Update pacman mirror list if you have slow speeds with the fastest servers avalable
+
+```bash
+$ sudo pacman -S reflector
+$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak # Backup the default mirror list
+$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist # Run this command to fetch the fastest 10 servers and add them to the mirror list
+$ sudo pacman -Sy
+```
+
 
 
 ~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
