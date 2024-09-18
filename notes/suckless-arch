@@ -97,6 +97,8 @@ $ sudo pacman -S ...
 
           * python  # Python programming language
           * npm     # JavaScript package manager
+          * go      # GO language core compiler
+                      tools, needed for "YAY"
 
           * vim neovim    # Best text editors ever!
 
@@ -141,7 +143,7 @@ $ sudo pacman -S ...
   rsync                      exfat-utils              fuse-exfat
   ntfs-3g                    flac                     curl
   wget                       jdk-openjdk              electrum
-  wine                       reflector                go
+  wine                       reflector
 
   cron(cronie, fcron, look up)
 
