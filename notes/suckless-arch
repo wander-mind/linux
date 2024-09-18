@@ -204,11 +204,14 @@ git clone https://git.suckless.org/dwm
 git clone https://git.suckless.org/dmenu
 git clone https://git.suckless.org/st
 cd dwm
-sudo make clean install
-cd ../st
-sudo make clean install
-cd ../dmenu
-sudo make clean install
+sudo make clean install      (                   ) (        (   (
+cd ../st                     )\ )        (    ( /( )\ )     )\ ))\ )
+sudo make clean install      (()/(   (    )\   )\()|()/( (  (()/(()/(
+cd ../dmenu                   /(_))  )\ (((_)|((_)\ /(_)))\  /(_))(_))
+sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
+                             / __| | | ((/ __| |/ /| |  | __/ __/ __|
+                             \__ \ |_| || (__  ' < | |__| _|\__ \__ \
+                             |___/\___/  \___|_|\_\|____|___|___/___/
 
 ~~~~~~~~~4.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
