@@ -125,6 +125,26 @@ $ sudo pacman -S ...
                           # for Android development, such as adb
                           # (Android Debug Bridge) and fastboot.
 
+                           ///==========\\\
+==========================|||| UNSORTED ||||============================
+                           \\\==========///
+
+  cmatrix                    virtualbox               dkms
+  qbittorrent                keepassxc                libreoffice
+  calibre                    gimp                     signal-desktop
+  picard                     mkvtoolnix-gui           mediainfo-gui
+  retroarch                  steam                    0ad
+  ffmpegthumbs               yt-dlp                   cdrdao
+  power-profiles-daemon      handbrake                perl-rename
+  dotnet-sdk                 veracrypt                brasero
+  p7zip                      unrar                    tar
+  rsync                      exfat-utils              fuse-exfat
+  ntfs-3g                    flac                     curl
+  wget                       jdk-openjdk              electrum
+  wine                       reflector                go
+
+  cron(cronie, fcron, look up)
+
 ~~~~~~~~~2.2.YAY(AUR)-SETUP-&-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Change threads for compiling software faster:
@@ -162,19 +182,17 @@ preload{sudo systemctl enable preload && sudo systemctl start preload}
                   #  \----------------------------------------------/  #
                   ######################################################
 
-After you save the file, run `sudo pacman -Sy` to activate changes.
+   - After you save the file, run `sudo pacman -Sy` to refresh changes.
 
-- Update pacman mirror list if you have slow speeds with the fastest servers avalable
+2. Update pacman mirror list !IF! you have slow speeds with the fastest
+   servers avalable:
 
-```bash
+````````````````````````````````````````````````````````````````````````
 $ sudo pacman -S reflector
 $ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak # Backup the default mirror list
 $ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist # Run this command to fetch the fastest 10 servers and add them to the mirror list
 $ sudo pacman -Sy
-```
-
-
-
+````````````````````````````````````````````````````````````````````````
 ~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 mkdir suckless
