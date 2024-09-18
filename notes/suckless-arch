@@ -155,7 +155,7 @@ $ sudo pacman -S ...
 
 2. Build YAY
   - git clone htttps://aur.archlinux.org/yay.git
-  - cd yay
+  - cd yay/
   - makepkg
   - sudo pacman -U yay-12.3...x86_64.pkg.tar.zst
 
