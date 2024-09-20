@@ -144,7 +144,7 @@ $ sudo pacman -S ...
   ntfs-3g                    flac                     curl
   wget                       jdk-openjdk              electrum
   wine                       reflector                gnu-free-fonts
-  noto-fonts
+  noto-fonts                 mullvad-browser-bin
 
   cron(cronie, fcron, look up)
 
