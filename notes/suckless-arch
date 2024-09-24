@@ -114,6 +114,10 @@ $ sudo pacman -S ...
           * fastfetch     # System information, like
                           # "neofetch", but better
 
+          * stow    # Symlink all files recursively
+                      to a given directory, very useful
+                      for managing dotfiles.
+
 ~~~~~~~~~2.1.SECONDARY-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           * arch-wiki-docs    # Ofline archwiki html
@@ -126,6 +130,8 @@ $ sudo pacman -S ...
           * android-tools # A collection of command-line utilities
                           # for Android development, such as adb
                           # (Android Debug Bridge) and fastboot.
+
+          * pcmanfm  # Minimal graphical file explorer
 
                            ///==========\\\
 ==========================|||| UNSORTED ||||============================
@@ -157,7 +163,7 @@ $ sudo pacman -S ...
                       set to that num - 2 (for example 12 threads -j10).
 
 2. Build YAY
-  - git clone htttps://aur.archlinux.org/yay.git
+  - git clone https://aur.archlinux.org/yay.git
   - cd yay/
   - makepkg
   - sudo pacman -U yay-12.3...x86_64.pkg.tar.zst
@@ -244,16 +250,25 @@ sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
     |       ALT + i, ALT + d        | Increase, decrease number of |
     |                               |  windows in the master area  |
     |       ALT + f, ALT + m        |  Floating, maximized window  |
+    |            ALT + b            |    Make window fullscreen    |
+    |       ALT + SHIFT + q         |           Quit DWM           |
     |--------------------------------------------------------------|
 
-  1.1 DWM Patches:
+1.1 DWM Patches:
 
    - attachbelow (new windows spawns after marked window, not as master)
    - uselessgap   (add gapps, unless in monacle mode - no gapps/borders)
    - alwayscenter   (floating window spawns in center instead of corner)
 
+1.2 DWM Patching Example:
 
-
+```bash
+$ cd { SUCKLESS / DWM }            # Go to DWM source code directory
+$ cp config.h config.def.h         # Make a backup of the working config
+$ patch -i patches/[patch.name]    # Patch DWM with the patch file
+$ sudo make clean install          # Recompile (refresh DWM after that)
+```
+- Make sure to exit DWM [ALT + SHIFT + q] and log back in to see changes
 
 
 
