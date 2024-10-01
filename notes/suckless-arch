@@ -155,6 +155,8 @@ $ sudo pacman -S ...
 
           * libreoffice   # Just an office suite
 
+          * 0ad      # Cool FOSS AOE-like game
+
                            ///==========\\\
 ==========================|||| UNSORTED ||||============================
                            \\\==========///
@@ -163,7 +165,7 @@ $ sudo pacman -S ...
                              keepassxc
   calibre                                             signal-desktop
                              mkvtoolnix-gui           mediainfo-gui
-  retroarch                  steam                    0ad
+  retroarch                  steam
   ffmpegthumbs               yt-dlp                   cdrdao
   power-profiles-daemon      handbrake                perl-rename
   dotnet-sdk                 veracrypt                brasero
