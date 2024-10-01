@@ -118,6 +118,13 @@ $ sudo pacman -S ...
                       to a given directory, very useful
                       for managing dotfiles.
 
+          * curl    # File transfer program over URL,
+                    # supporting many protocols [http, ftp...]
+
+          * tar     # Archiving utility - often combined
+                    # with a compression method, such as
+                    # `gzip` or `bzip2`
+
 ~~~~~~~~~2.1.SECONDARY-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           * arch-wiki-docs    # Ofline archwiki html
@@ -133,21 +140,35 @@ $ sudo pacman -S ...
 
           * pcmanfm  # Minimal graphical file explorer
 
+          * rtorrent # Good CLI minimal torrent client,
+                     # needs config file to work.
+
+          * gimp     # Photo/graphics editing software
+
+          * cmatrix  # Cool visual useless CLI program
+
+          * picard   # Music tagging program
+
+          * figlet   # {ASCII} CLI tool to convert
+                     # text input to ASCII art
+
+          * libreoffice   # Just an office suite
+
                            ///==========\\\
 ==========================|||| UNSORTED ||||============================
                            \\\==========///
 
-  cmatrix                    virtualbox               dkms
-  qbittorrent                keepassxc                libreoffice
-  calibre                    gimp                     signal-desktop
-  picard                     mkvtoolnix-gui           mediainfo-gui
+                             virtualbox               dkms
+                             keepassxc
+  calibre                                             signal-desktop
+                             mkvtoolnix-gui           mediainfo-gui
   retroarch                  steam                    0ad
   ffmpegthumbs               yt-dlp                   cdrdao
   power-profiles-daemon      handbrake                perl-rename
   dotnet-sdk                 veracrypt                brasero
-  p7zip                      unrar                    tar
+  p7zip                      unrar
   rsync                      exfat-utils              fuse-exfat
-  ntfs-3g                    flac                     curl
+  ntfs-3g                    flac
   wget                       jdk-openjdk              electrum
   wine                       reflector                gnu-free-fonts
   noto-fonts                 mullvad-browser-bin
@@ -249,7 +270,7 @@ sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
     |       ALT + h, ALT + l        |        Resize window         |
     |       ALT + i, ALT + d        | Increase, decrease number of |
     |                               |  windows in the master area  |
-    |       ALT + f, ALT + m        |  Floating, maximized window  |
+    |  ALT + t, ALT + f, ALT + m    |  Floating, maximized window  |
     |            ALT + b            |    Make window fullscreen    |
     |       ALT + SHIFT + q         |           Quit DWM           |
     |--------------------------------------------------------------|
@@ -366,4 +387,11 @@ $ sudo make clean install          # Recompile (refresh DWM after that)
                               sudo groupdel ollama
                               ```
 
++++++
+FONTS
++++++
 
+add your fonts to ~/.local/share/fonts/
+                      /usr/share/fonts/
+
+$ fc-cache -fv (to install them)
