@@ -91,6 +91,7 @@ $ sudo pacman -S ...
 
           * man     # Installed program manuals interface
           * tldr    # Other helpful program manuals
+                    # [Use `tldr --update` to sync]
 
           * htop btop     # CLI task managers, and
                           # system process managers
