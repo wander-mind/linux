@@ -1,0 +1,5 @@
+# symlinks all files and folders in this working directory in the parent directory, so one folder back.
+
+```bash
+$ stow .
+```
