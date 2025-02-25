@@ -1,0 +1,768 @@
+########################################################################
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+#:.       ██╗    ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██████╗        .:#
+#:.       ██║    ██║██╔══██╗████╗  ██║██╔══██╗██╔════╝██╔══██╗       .:#
+#:.       ██║ █╗ ██║███████║██╔██╗ ██║██║  ██║█████╗  ██████╔╝       .:#
+#:.       ██║███╗██║██╔══██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗       .:#
+#:.       ╚███╔███╔╝██║  ██║██║ ╚████║██████╔╝███████╗██║  ██║       .:#
+#:.        ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝       .:#
+#:.                                                                  .:#
+#:.       ███╗   ███╗██╗███╗   ██╗██████╗    E-Mail: w.m@tuta.com    .:#
+#:.       ████╗ ████║██║████╗  ██║██╔══██╗                           .:#
+#:.       ██╔████╔██║██║██╔██╗ ██║██║  ██║   GitHub: github.com/     .:#
+#:.       ██║╚██╔╝██║██║██║╚██╗██║██║  ██║              wander-mind  .:#
+#:.       ██║ ╚═╝ ██║██║██║ ╚████║██████╔╝                           .:#
+#:.       ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═════╝      Site: wandermind.xyz  .:#
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+########################################################################
+
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ Arch-Linux prep ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+
+Here I will explain how I configure my Arch-Linux system from scratch.
+I already know how to install my system manualy, but I still prefer to
+make a minimal install with the ```archinstall``` script. I like to add
+swap, encrypt my drive, use btrfs, enable multilib, and use a minimal
+install.
+
+~~~~~~~~~1.WIFI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                      .
+             . .                     -:-             .  .  .
+           .'.:,'.        .  .  .     ' .           . \ | / .
+           .'.;.//~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\\/__.
+            `,://:If you don't have an ethernet cable:::\\.      . ' .
+            ,'|||:connection during instalation of arch,|||       .:.
+           ,   \\:you need to connect to WI-FI instead:://.        ',
+    .====.,     \\~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~//|   ..===.
+    |.::'||      .=====.,    ..=======.~,   |"|: :|::::::|   ||:::|=====|
+ ___| :::|!__.,  |:::::|!_,   |: :: ::|"|l_l|"|:: |:;;:::|___!| ::|: : :|
+|: :|::: |:: |!__|; :: |: |===::: :: :|"||_||"| : |: :: :|: : |:: |:::::|
+|:::| _::|: :|:::|:===:|::|:::|:===F=:|"!/|\!"|::F|:====:|::_:|: :|::__:|
+!_[]![_]_!_[]![]_!_[__]![]![_]![_][I_]!//_:_\\![]I![_][_]!_[_]![]_!_[__]!
+-----------------------------------"---''''```---"-----------------------
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |= _ _:_ _ =| _ _ _ _ _ _ _ _ _ _ _ _
+                                    |=    :    =|
+____________________________________L___________J________________________
+-----------------------------------------_-------_--_----------____---_--
+nmcli d                                 ( )  _  ( )(_)        (  _`\ (_)
+nmcli r wifi on                         | | ( ) | || | ______ | (_(_)| |
+nmcli d wifi list                       | | | | | || |(______)|  _)  | |
+nmcli d wifi connect {SSID} password {PASSWORD}_) || |        | |    | |
+                                        `\___x___/'(_)        (_)    (_)
+     Then:
+~~~~~~~~~2.TTY-FONTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You may not like the look       MMP""MM""YMM MMP""MM""YMM `YMM'   `MM'
+and size of the font in the     P'   MM   `7 P'   MM   `7   VMA   ,V
+TTY, while you're configuring        MM           MM         VMA ,V
+arch lets say. So here is how        MM           MM          VMMP
+we can go about this:                MM           MM           MM
+                                     MM           MM           MM
+1. If you want to print &          .JMML.       .JMML.       .JMML.
+view the current fonts          ____    ____      _  _    ____    ___
+character set - use            F ___J  F __ ]    F L L]  /_  _\  F __".
+```showconsolefont```.        J |___: J |--| L  J   \| L [J  L] J (___|
+                              | _____|| |  | |  | |\   |  |  |  J\___ \
+2. Next we are going to       F |____JF L__J J  F L\\  J  F  J .--___) \
+change our font, but         J__F    J\______/FJ__L \\__LJ____LJ\______J
+first we need to search      |__|     J______F |__L  J__||____| J______F
+through our avalable ones:
+```cd /usr/share/kbd/consolefonts/```. If we "ls" here, we will see a
+list of all avalable tty fonts. We set our font with the command:
+```setfont {font.name}```, but this is temporary, if we reboot the
+system the font will reset.
+
+3. We can install extra fonts here, for example the 'terminus' font by:
+```sudo pacman -Syu terminus-font```. Now if we list the directory we
+will see a bunch of new fonts. You can install other packs too.
+
+4. In order to make our new font choice pernament, we need to create a
+new config file: ```sudo vim /etc/vconsole.conf```. In there we can add:
+
+```/etc/vconsole.conf
+FONT={font.name}
+```
+~~~~~~~~~2.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$ sudo pacman -S          # Install
+$ sudo pacman -Ss         # Search
+$ sudo pacman -Si         # +PKG_NAME - info about package
+$ sudo pacman -U          # Build a package
+$ sudo pacman -Rns        # Remove PKG with non-conflicting dependancies
+$ sudo pacman -Qdtq       # Find orphaned/unused packages
+
+$ sudo pacman -S ...
+          * base-devel    # Includes GCC, make, and
+                          # other useful build tools
+
+          * linux-headers # are essential for building
+                          # and compiling kernel modules,
+            # device drivers, and some user programs that
+            # interface with the Linux kernel. Some Arch
+            # packages, such as "nvidia" or "virtualbox",
+            # rely on "linux-headers" to function properly.
+            # These packages require the header files to
+            # compile and install their own kernel modules.
+
+          * intel-ucode   # contains updated CPU microcode
+          *   amd-ucode   # from Intel and AMD. Microcode is
+                          # a type of firmware that resides
+                          # in the CPU and controls various
+                          # low-level CPU operations.
+
+          * xorg    # You can download individual x.org
+                    # packages for a bit more security
+                    # and to reduce bloat, but I prefer
+                    # the full x.org packages
+
+          * dosfstools    # A collection of utilities for
+                          # creating, checking, and labeling
+                          # MS-DOS FAT filesystems on Linux
+
+          * git     # Git... we need it
+
+          * man     # Installed program manuals interface
+          * tldr    # Other helpful program manuals
+                    # [Use `tldr --update` to sync]
+
+          * htop btop     # CLI task managers, and
+                          # system process managers
+
+          * python  # Python programming language
+          * npm     # JavaScript package manager
+          * go      # GO language core compiler
+                    # tools, needed for "YAY"
+
+          * vim neovim    # Best text editors ever!
+
+          * kitty   # It's good to have 2 terminal
+                    # emulators, this will be one
+
+          * ufw     # {Firewall} provides a simple and easy-to-use
+                    # command-line interface for managing "netfilter",
+                    # a packet filtering system in the Linux kernel.
+
+          * mpv vlc # The best media players
+
+          * fastfetch     # System information, like
+                          # "neofetch", but better
+
+          * stow    # Symlink all files recursively
+                    # to a given directory, very useful
+                    # for managing dotfiles.
+
+          * curl    # File transfer program over URL,
+                    # supporting many protocols [http, ftp...]
+
+          * tar     # Archiving utility - often combined
+                    # with a compression method, such as
+                    # `gzip` or `bzip2`
+
+          * udisks2        # CLI tools for
+          * udisks2-btrfs  # mounting external
+          * udisks2-lvm2   # filesystems, like USB drives.
+          * udiskie        # Launch 'udiskie' to automount
+
+          * pcmanfm  # Minimal graphical file explorer
+          * gvfs     # Support for trash, mounting
+                     # with udisks, udiskie, ect.
+
+          * arch-wiki-docs    # Ofline archwiki html
+          * arch-wiki-lite    # Ofline archwiki txt
+
+          * android-udev  # Provides udev rules for Android devices
+                          # to be recognized properly by the system
+                          # when connected via USB.
+
+          * android-tools # A collection of command-line utilities
+                          # for Android development, such as adb
+                          # (Android Debug Bridge) and fastboot.
+
+          * gimp     # Photo/graphics editing software
+
+          * cmatrix  # Cool visual useless CLI program
+
+          * picard   # Music tagging program
+
+          * figlet   # {ASCII} CLI tool to convert
+                     # text input to ASCII art
+
+          * libreoffice   # Just an office suite
+
+          * 0ad      # Cool FOSS AOE-like game
+
+                           ///==========\\\
+==========================|||| UNSORTED ||||============================
+                           \\\==========///
+
+#alacritty               qt6-wayland              qt5-wayland
+ zsh   fish   dash       signal-desktop          #rtorrent
+ wine                    gnu-free-fonts           fuse-exfat
+ exfat-utils             flac                     ntfs-3g
+ unrar                   yt-dlp                   mkvtoolnix-gui
+ mediainfo-gui           retroarch                shattered-pixel-dungeon
+ 7zip                    thunderbird             #timeshift
+#obs-studio              steam                    locate
+ gnuchess (& xboard)     veracrypt                sonic-visualiser
+ vcdimager (Video CD)    cdrdao                   k3b
+ tmux                    ttf-jetbrains-mono       ttf-ubuntu-font-family
+#udisks2                #udiskie                 #udisks-lvm2
+#udisks-btrfs            gtk3                    #hyprland
+ p7zip                   wget                     keepassxc
+#handbrake               qbittorrent              zip
+ unzip                 #waybar(+ttf-fontawesome) #libexif(for sxiv)
+ drawio-desktop          obsidian                #lxqt
+ terminus-font           flatpak                  firefox
+ retroarch
+
+ xclip (x11 terminal clipboard manager)
+
+ -----
+#sudo -v && wget --no-check-certificate -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+ -----
+ -----
+ curl -fsSL https://ollama.com/install.sh | sh
+ -----
+
+-------AWESOME--------
+
+#awesome                #awesome-extra           #awesome-doc
+
+-------COSMIC---------
+
+ csomic-session         #cosmic-store             cosmic-terminal
+ cosmic-wallpapers       cosmic-text-editor
+
+-------XFCE-----------
+
+ gvfs                    pavucontrol             #xarchiver
+#xfce4                  #xfce4-goodies           #lightdm-gtk-greeter
+
+-------GNOME----------
+#gnome
+#gnome-shell            #gdm                     #nautilus
+#gnome-tweaks           #gnome-calculator        #gnome-system-monitor
+#gnome-control-center   #gnome-weather           #gnome-text-editor
+#gnome-maps             #gnome-clocks            #gnome-font-viewer
+
+---gnome fractional scalling----
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+--------KDE-----------
+ plasma                  yakuake                  konsole
+ kcalc                   filelight                kdenlive
+ spectacle               kolourpaint              kpat (card games)
+ ark                     dolphin                  elisa
+ ffmpegthumbs (dolphin)  gwenview                 k3b
+ kate                    okular                   kdegraphics-thumbnailers
+ partitionmanager        kfind                    pavucontrol
+ kscreenlocker
+
+WIFI
+=========
+ networkmanager          network-manager-applet   wireless_tools
+ wpa_supplicant
+
+ sudo systemctl enable NetworkManager
+ sudo systemctl start NetworkManager
+
+Bluetooth
+=========
+ bluez                   bluez-utils             #gnome-bluetooth
+ blueman
+
+ sudo systemctl enable bluetooth
+ sudo systemctl start bluetooth
+
+Power Management
+================
+ upower                 #gnome-power-manager     #tlp (optional)
+ power-profiles-daemon
+
+ sudo systemctl enable tlp   (optional)
+ sudo systemctl start tlp    (optional)
+
+LaTeX
+================
+#texlive-basic          #texlive-fontsrecommended #texlive-latex
+#texlive-mathscience    #texlive-latexextra      #texlive-latexrecommended
+#texlive-pictures
+
+Virtualbox
+================
+ virtualbox             #virtualbox-dkms          [(linux-headers)]
+
+VirtManager
+================
+#archlinux-keyring      #qemu                    #virt-manager
+#virt-viewer            #dnsmasq                 #vde2
+#bridge-utils           #openbsd-netcat          #dmidecode
+#ebtables               #iptables                #libguestfs
+#guestfish              #virt-v2v                #virt-cat
+#virt-dif               #virt-inspect
+
+~~~~~~~~~2.1.YAY(AUR)-SETUP-&-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Change threads for compiling software faster:
+  - sudo vim /etc/makepkg.conf >>> MAKEFLAGS="-j№№"
+
+                    # Number of threads to use when compiling, usualy
+                    # set to that num - 2 (for example 12 threads -j10).
+
+2. Build YAY
+  - git clone https://aur.archlinux.org/yay.git
+  - cd yay/
+  - makepkg
+  - sudo pacman -U yay-12.3...x86_64.pkg.tar.zst
+
+3. Software:
+
+ mullvad-vpn-bin         brave-bin                viber
+ gnubg                   rubyripper               shell-color-scripts-git
+ tutanota-desktop-bin    drawio-desktop          #downgrade
+#timeshift               vrms-arch-git           #balena-etcher
+#librewolf-bin           spotify-adblock
+
+#preload(for hdd mostly, not ssd)
+#{sudo systemctl enable preload && sudo systemctl start preload}
+
+~~~~~~~~~2.2.FLATPAK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ flathub                 com.vscodium.codium      com.brave.Browser
+ io.github.peazip.PeaZip com.usebottles.bottles   fr.handbrake.ghb
+ org.kde.krename         com.obsproject.Studio    app.zen_browser.zen
+ org.freac.freac
+
+~~~~~~~~~2.3.ARCH-IMPROVING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                  ######################################################
+                  #  /----------------------------------------------\  #
+1. Edit           # /   $ sudo vim /etc/pacman.conf                  \ #
+   pacman         #|    # Uncomment these lines:                      |#
+   config:        #|    Color                                         |#
+                  #|    ParallelDownloads = 4                         |#
+                  #|    # Add this line to add the Pacman animation:  |#
+                  # \   ILoveCandy                                   / #
+                  #  \----------------------------------------------/  #
+                  ######################################################
+
+   - After you save the file, run `sudo pacman -Sy` to refresh changes.
+
+2. Update pacman mirror list !IF! you have slow speeds with the fastest
+   servers avalable:
+
+```bash
+$ sudo pacman -S reflector
+# -- Backup the default mirror list:
+$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# -- Run this command to fetch the fastest 10 servers
+#    and add them to the mirror list:
+$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+$ sudo pacman -Sy
+```
+~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+mkdir suckless
+cd suckless
+git clone https://git.suckless.org/dwm
+git clone https://git.suckless.org/dmenu
+git clone https://git.suckless.org/st
+cd dwm
+sudo make clean install      (                   ) (        (   (
+cd ../st                     )\ )        (    ( /( )\ )     )\ ))\ )
+sudo make clean install      (()/(   (    )\   )\()|()/( (  (()/(()/(
+cd ../dmenu                   /(_))  )\ (((_)|((_)\ /(_)))\  /(_))(_))
+sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
+                             / __| | | ((/ __| |/ /| |  | __/ __/ __|
+                             \__ \ |_| || (__  ' < | |__| _|\__ \__ \
+                             |___/\___/  \___|_|\_\|____|___|___/___/
+
+~~~~~~~~~4.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Make sure you have xorg-xinit installed (because we need to install
+   in order to have our '.xinitrc' file working, and to able to start
+   our graphical environment with the "startx" command).
+
+2. Asuming you haven't installed any other shell, you should have a
+   '.bash_profile' file in our home folder. We are going to add an 'IF'
+   statement, that automatically starts X if no other graphical server
+   is loaded. I have an example ".bash_profile" file in my dotfiles.
+
+3. We need to create our ".xinitrc" file in our home folder. I have a
+   template in my dotfiles with explanations and examples of all you
+   need to do in the file.
+
+~~~~~~~~~5.DWM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. DWM Default key bindings:
+    |--------------------------------------------------------------|
+    |      ALT + SHIFT + ENTER      |         Open Terminal        |
+    |       ALT + k, ALT + j        | Highligh next or prev window |
+    |       ALT + SHIFT + c         |   Close Highlighted Window   |
+    |            ALT + p            |          Opens Dmenu         |
+    |   ALT + SHIFT + [1-2-3-4...]  |  Move window to another tab  |
+    |       ALT + h, ALT + l        |        Resize window         |
+    |       ALT + i, ALT + d        | Increase, decrease number of |
+    |                               |  windows in the master area  |
+    |  ALT + t, ALT + f, ALT + m    |  Floating, maximized window  |
+    |            ALT + b            |    Make window fullscreen    |
+    |       ALT + SHIFT + q         |           Quit DWM           |
+    |--------------------------------------------------------------|
+
+1.1 DWM Patches:
+
+   - attachbelow (new windows spawns after marked window, not as master)
+   - uselessgap   (add gapps, unless in monacle mode - no gapps/borders)
+   - alwayscenter   (floating window spawns in center instead of corner)
+
+1.2 DWM Patching Example:
+
+```bash
+$ cd { SUCKLESS / DWM }            # Go to DWM source code directory
+$ cp config.h config.def.h         # Make a backup of the working config
+$ patch -i patches/[patch.name]    # Patch DWM with the patch file
+$ sudo make clean install          # Recompile (refresh DWM after that)
+```
+- Make sure to exit DWM [ALT + SHIFT + q] and log back in to see changes
+
+~~~~~~~~~6.POWER-MANAGEMENT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ _____  _      ____
+|_   _|| |    |  _ \    - When you install TLP on Arch linux,
+  | |  | |    | |_) |     you only need to enable it once:
+  | |  | |___ |  __/
+  |_|  |_____||_|          ```sudo systemctlenable tlp```
+
+This command ensures that TLP starts automatically at boot. After
+enabling it, you do not need to run systemctl start tlp every time;
+it will start automatically when your system boots up.
+ud
+- TLP is designed to automatically manage power profiles based on
+whether your laptop is running on battery or is plugged into AC power.
+It should switch profiles seamlessly without any additional
+configuration needed. Just make sure to check that it’s running
+correctly with: //=-=-=-=-=-=-=-\\
+                ||```tlp-stat```||
+                \\=-=-=-=-=-=-=-//
+This command will give you a summary of the current power status and
+show you if it's properly switching between battery and AC profiles.
+If you have any specific configurations you want to apply, you can edit
+the TLP configuration file at /etc/default/tlp.
+
+
+~~~~~~~~~7.BLUETOOTH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. ```sudo pacman -S bluez bluez-utils blueman```
+
+-==This installs three packages:==-
+     * bluez  # This is the official Bluetooth protocol stack for Linux.
+              # It provides the necessary software to enable Bluetooth
+              # communication.
+
+     * bluez-utils  # This includes additional utilities for interacting
+                    # with Bluetooth devices, like "bluetoothctl", which
+                    # allows you to pair, connect, and manage Bluetooth
+                    # devices via the command line.
+
+     * blueman  # This is a GUI tool for managing BT connections.
+                # It provides an easy way to connect to
+                # and manage Bluetooth devices from the desktop.
+
+2. ```sudo systemctl start bluetooth.service```
+  ____________________________________________________________________
+ // This command starts the Bluetooth service on your system for the \\
+ \\ current session. It launches the bluetooth.service so that your  //
+ // system can begin discovering and connecting to Bluetooth devices.\\
+ \\__________________________________________________________________//
+
+3. ```sudo systemctl enable bluetooth.service```
+
+     ,----------------------------------------------------------,
+    / This enables the Bluetooth service to start automatically  \
+   ||    on boot. It ensures that the bluetooth.service is       ||
+   ||  always running when your system starts, without needing   ||
+    \             to manuall start it each time.                 /
+     \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
+~~~~~~~~~8.SCREEN-BRIGHTNESS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ___           - 'sudo pacman -S xorg-xbacklight'
+    .-"`   `"-.
+  .'           '.     nvim /suckless/dwm/config.h
+ /               \
+/  #              \     
+| #               |
+|                 | /* Keybinfings for screen brightness*/ 
+;     .-~~~-.     ; { 0, XK_F5, spawn, SHCMD("xbacklight -dec 10") } 
+;     .-~~~-.     ; { 0, XK_F6, spawn, SHCMD("xbacklight -inc 10") }
+  \   (     )   /
+   \   \   /   /
+    \   ) (   /
+     |  | |  |
+     |__|_|__|
+     {=======}
+     }======={
+     {=======}
+     }======={
+     {=======}
+      `""U""`
+
+
+~~~~~~~~~9.AI-(OLLAMA)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         Get ollama to run LLM's
+               ---------------------------------------------
+         ```   curl -fsSL https://ollama.com/install.sh | sh   ```
+               ---------------------------------------------
+
+               The bin is located in: "/usr/local/bin/ollama"
+               (this is if you want to delete the program, because
+               when you curl, you bypass the package manager).
+
+            1. Here's a general guideline on how to uninstall it:
+
+                          +        Delete the Ollama binary:
+                                   Use the rm command to remove the
+                                   Ollama binary. For example:
+
+            :::           **       ```bash
+          :+: :+:                  sudo rm /usr/local/bin/ollama
+         +:+   +:+                 ```
+        +#++:++#++:
+        +#+     +#+       +        If the script created a systemd
+        #+#     #+#                service, disable and remove it:
+        ###     ###         If the script created a systemd service
+                            for Ollama, you should disable and
+                            remove it using the following commands:
+
+        :::::::::::       **  ```bash
+            :+:               sudo systemctl stop ollama
+            +:+               sudo systemctl disable ollama
+            +#+               sudo rm /etc/systemd/system/ollama.service
+            +#+               sudo systemctl daemon-reload
+            #+#               ```
+        ###########
+                          +         Remove any created user and group
+                                    (if applicable):
+                             The script might have created a user and
+                             group named "ollama." You can remove them
+                             using the following commands:
+
+                          **  ```bash
+                              sudo userdel ollama
+                              sudo groupdel ollama
+                              ```
+
+   /++++++\
+<><10.FONTS><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+   \++++++/
+
+add your fonts to ~/.local/share/fonts/
+                      /usr/share/fonts/
+
+$ fc-cache -fv (to install them)
+
+      /=====\                /=============\
+-+===<-11.VM->==============<- VirtManager ->===========================
+      \=====/                \=============/
+
+0. VirtualBox - pacman -S virtualbox dkms linux-headers
+
+1. Step 1: Install KVM Packages
+
+    KVM is the core virtualization technology in Linux, which uses
+    the hardware virtualization features of your CPU. This step
+    installs the necessary packages for KVM to function.
+
+        $ sudo pacman -Syy
+
+  * archlinux-keyring    # This is necessary to ensure that
+                         # the package manager can authenticate
+                         # the packages during installation
+                         # (security check).
+
+  * qemu    # The QEMU emulator provides hardware
+            # emulation for virtualization. It’s
+            # used by KVM to run virtual machines.
+
+  * virt-manager    # A graphical interface to manage
+                    # virtual machines using libvirt
+                    # (which interfaces with KVM).
+                    # It's the primary tool to create
+                    # and manage your virtual machines.
+
+  * virt-viewer    # A viewer application to display the
+                   # graphical console of virtual machines.
+
+  * dnsmasq    # A lightweight DNS and DHCP server.
+               # It's useful for providing networking
+               # services to your virtual machines,
+               # especially in a bridged network setup.
+
+  * vde2    # A set of tools for creating and managing
+            # virtual Ethernet networks, enabling VMs
+            # to communicate with each other.
+
+  * bridge-utils    # A set of utilities for configuring
+                    # Ethernet bridges, which are needed
+                    # for connecting your virtual machines
+                    # to the physical network.
+
+  * openbsd-netcat    # A utility for reading and writing
+                      # data across network connections using
+                      # the TCP/IP protocol. It's sometimes used
+                      # for networking between VMs or debugging
+                      # network issues.
+
+  * dmidecode    # A tool for extracting detailed
+                 # hardware information from the BIOS.
+                 # This is useful for managing virtual
+                 # hardware and ensuring compatibility.
+
+  * ebtables    # A user-space utility for managing
+                # Ethernet frame filtering rules.
+                # This can be used for controlling
+                # traffic at the Ethernet level.
+
+  * iptables    # A tool for configuring the
+                # Linux kernel’s network packet
+                # filtering system. It's used to
+                # configure networking rules for
+                # your virtual machines, such as
+                # setting up NAT or firewall rules.
+
+  * libguestfs    # a set of tools for accessing and
+                  # modifying the disk images of virtual
+                  # machines. This allows you to mount
+                  # VM disk images as if they were
+                  # physical drives, making it easier
+                  # to manage and manipulate VM files.
+
+  * guestfish    # A shell-like tool for
+                 # interacting with disk images.
+
+  * virt-v2v    # A tool for converting virtual
+                # machines between different formats.
+
+  * virt-cat    # A tool for displaying the
+                # contents of a file within a VM.
+
+  * virt-dif    # Displays disk usage of virtual machines.
+
+  * virt-inspect    # Examines and reports on the
+                    # structure of a disk image.
+
+3. Start KVM libvirt Service
+
+  * sudo systemctl enable libvirtd.service
+                    # Enables the libvirtd service to start
+                    # at boot. libvirtd is the daemon responsible
+                    # for managing virtual machines.
+
+  * sudo systemctl start libvirtd.service
+                    # Starts the libvirtd service immediately.
+
+  * systemctl status libvirtd.service
+                    # Displays the status of the libvirtd service,
+                    # confirming that it is running.
+
+4. Enable Normal User Account to Use KVM
+
+    KVM, by default, only allows privileged users (root or members
+    of the libvirt group) to manage virtual machines. This step
+    ensures that your regular user account can manage KVM.
+
+  * sudo vim /etc/libvirt/libvirtd.conf
+
+      ==> unix_sock_group = "libvirt"
+
+          # This makes the Unix socket used by libvirt
+          # accessible by users in the libvirt group.
+
+      ==> unix_sock_rw_perms = "0770"
+
+          # Sets the read-write permissions for the Unix socket
+          # to allow group members to interact with it.
+
+  * sudo usermod -a -G libvirt $(whoami)
+
+          # Adds your user account to the libvirt
+          # group, which grants you permission to
+          # interact with the virtualization services.
+
+  * newgrp libvirt
+
+          # This command refreshes the group membership,
+          # so you don’t need to log out and log back in
+          # for the changes to take effect.
+
+  * sudo systemctl restart libvirtd.service
+
+          # Restarts the libvirtd service to apply the changes.
+
+5. Enable Nested Virtualization (Optional)
+
+    _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-__
+    \ Nested virtualization allows you to run virtual   \
+    / machines inside other virtual machines. This is    \
+    \ useful for testing or creating virtual environments/
+    / that emulate multiple layers of virtualization.   /
+    \_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-/
+
+  * For Intel CPUs:
+
+      ==> sudo modprobe -r kvm_intel
+
+          # Removes the existing KVM Intel module.
+
+      ==> sudo modprobe kvm_intel nested=1
+
+          # Loads the Intel KVM module with nested
+          # virtualization enabled.
+
+  * For AMD CPUs:
+
+      ==> sudo modprobe -r kvm_amd
+
+          # Removes the existing KVM AMD module.
+
+      ==> sudo modprobe kvm_amd nested=1
+
+          # Loads the AMD KVM module with nested
+          # virtualization enabled.
+
+~~~~~~~~~~~~~~~~~~~~
+
+1. Generate the Required Locales
+    uncomment `en_US.UTF-8 UTF-8`,`bg_BG.UTF-8 UTF-8` in /etc/locale.gen, then generate the locales by `sudo locale-gen`
+
+2. Set Your Locale
+    Set the System-Wide Locale (Editing /etc/locale.conf)
+The /etc/locale.conf file is where you define the system-wide locale settings. These settings are applied to the entire system, affecting all users and applications.
+
+Open the /etc/locale.conf file with a text editor. If the file doesn’t exist, create it:
+
+bash
+Copy code
+sudo nano /etc/locale.conf
+In this file, you’ll specify the LANG variable, which defines the primary language and character encoding used by your system. The LANG variable typically governs the overall language preference, while additional LC_* variables can specify regional formats for time, date, numbers, and so on.
+
+For your system, you’ll likely want to set en_US.UTF-8 as the default language and use Bulgarian (bg_BG.UTF-8) for regional formats (time, measurement units, etc.). Here’s how you might configure it:
+
+ini
+Copy code
+LANG=en_US.UTF-8                # Primary language
+LC_TIME=bg_BG.UTF-8             # Time format (24-hour clock)
+LC_MEASUREMENT=bg_BG.UTF-8      # Metric system for measurements
+LC_PAPER=bg_BG.UTF-8            # Paper size (A4 for Bulgaria)
+LC_TELEPHONE=bg_BG.UTF-8        # Phone number format
+LC_NUMERIC=bg_BG.UTF-8          # Number format (e.g., 1.000,00)
+Explanation of Locale Variables:
+
+LANG=en_US.UTF-8: This is the main locale setting. It configures the language and encoding used by default on the system. en_US.UTF-8 sets the system language to English (United States) and uses UTF-8 encoding.
+LC_TIME=bg_BG.UTF-8: This configures the system to use the Bulgarian time and date format (e.g., 24-hour clock instead of AM/PM).
+LC_MEASUREMENT=bg_BG.UTF-8: Sets the measurement system to metric (e.g., meters and kilograms).
+LC_PAPER=bg_BG.UTF-8: Specifies the paper size, which in Bulgaria is usually A4.
+LC_TELEPHONE=bg_BG.UTF-8: Configures how telephone numbers are displayed according to Bulgarian conventions.
+LC_NUMERIC=bg_BG.UTF-8: Defines the format for numbers, including decimal points and grouping separators (e.g., 1.000,00 instead of 1,000.00).
+
+3. Apply the Changes
+    source /etc/locale.conf
+
