@@ -83,7 +83,34 @@ new config file: ```sudo vim /etc/vconsole.conf```. In there we can add:
 ```/etc/vconsole.conf
 FONT={font.name}
 ```
-~~~~~~~~~2.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~3.ARCH-IMPROVING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                  ######################################################
+                  #  /----------------------------------------------\  #
+1. Edit           # /   $ sudo vim /etc/pacman.conf                  \ #
+   pacman         #|    # Uncomment these lines:                      |#
+   config:        #|    Color                                         |#
+                  #|    ParallelDownloads = 7                         |#
+                  #|    # Add this line to add the Pacman animation:  |#
+                  # \   ILoveCandy                                   / #
+                  #  \----------------------------------------------/  #
+                  ######################################################
+
+   - After you save the file, run `sudo pacman -Sy` to refresh changes.
+
+2. Update pacman mirror list !IF! you have slow speeds with the fastest
+   servers avalable:
+
+```bash
+$ sudo pacman -S reflector
+# -- Backup the default mirror list:
+$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# -- Run this command to fetch the fastest 10 servers
+#    and add them to the mirror list:
+$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+$ sudo pacman -Sy
+```
+~~~~~~~~~4.INSTALL~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $ sudo pacman -S          # Install
 $ sudo pacman -Ss         # Search
 $ sudo pacman -Si         # +PKG_NAME - info about package
@@ -276,8 +303,8 @@ Bluetooth
 
 Power Management
 ================
- upower                 #gnome-power-manager     #tlp (optional)
- power-profiles-daemon
+ upower                 #gnome-power-manager     power-profiles-daemon
+#tlp                    #tlp-rdw
 
  sudo systemctl enable tlp   (optional)
  sudo systemctl start tlp    (optional)
@@ -301,7 +328,7 @@ VirtManager
 #guestfish              #virt-v2v                #virt-cat
 #virt-dif               #virt-inspect
 
-~~~~~~~~~2.1.YAY(AUR)-SETUP-&-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~4.1.YAY(AUR)-SETUP-&-SOFTWARE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Change threads for compiling software faster:
   - sudo vim /etc/makepkg.conf >>> MAKEFLAGS="-j№№"
@@ -326,41 +353,14 @@ VirtManager
 #preload(for hdd mostly, not ssd)
 #{sudo systemctl enable preload && sudo systemctl start preload}
 
-~~~~~~~~~2.2.FLATPAK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~4.2.FLATPAK~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  flathub                 com.vscodium.codium      com.brave.Browser
  io.github.peazip.PeaZip com.usebottles.bottles   fr.handbrake.ghb
  org.kde.krename         com.obsproject.Studio    app.zen_browser.zen
  org.freac.freac
 
-~~~~~~~~~2.3.ARCH-IMPROVING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-                  ######################################################
-                  #  /----------------------------------------------\  #
-1. Edit           # /   $ sudo vim /etc/pacman.conf                  \ #
-   pacman         #|    # Uncomment these lines:                      |#
-   config:        #|    Color                                         |#
-                  #|    ParallelDownloads = 4                         |#
-                  #|    # Add this line to add the Pacman animation:  |#
-                  # \   ILoveCandy                                   / #
-                  #  \----------------------------------------------/  #
-                  ######################################################
-
-   - After you save the file, run `sudo pacman -Sy` to refresh changes.
-
-2. Update pacman mirror list !IF! you have slow speeds with the fastest
-   servers avalable:
-
-```bash
-$ sudo pacman -S reflector
-# -- Backup the default mirror list:
-$ sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-# -- Run this command to fetch the fastest 10 servers
-#    and add them to the mirror list:
-$ sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-$ sudo pacman -Sy
-```
-~~~~~~~~~3.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~5.SUCKLEESSS-intial-install~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 mkdir suckless
 cd suckless
@@ -377,7 +377,7 @@ sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
                              \__ \ |_| || (__  ' < | |__| _|\__ \__ \
                              |___/\___/  \___|_|\_\|____|___|___/___/
 
-~~~~~~~~~4.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~6.WM-STARTUP~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Make sure you have xorg-xinit installed (because we need to install
    in order to have our '.xinitrc' file working, and to able to start
@@ -392,9 +392,9 @@ sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
    template in my dotfiles with explanations and examples of all you
    need to do in the file.
 
-~~~~~~~~~5.DWM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~7.DWM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. DWM Default key bindings:
+7.1 DWM Default key bindings:
     |--------------------------------------------------------------|
     |      ALT + SHIFT + ENTER      |         Open Terminal        |
     |       ALT + k, ALT + j        | Highligh next or prev window |
@@ -409,28 +409,31 @@ sudo make clean install      (_)) _ ((_))\___|_ ((_|_)) ((_)(_))(_))
     |       ALT + SHIFT + q         |           Quit DWM           |
     |--------------------------------------------------------------|
 
-1.1 DWM Patches:
+7.2 DWM Patches:                   ! Make a folder 'patches' !
+                                   ! in the DWM folder, and  !
+                                   ! paste patches there.    !
 
-   - attachbelow (new windows spawns after marked window, not as master)
-   - uselessgap   (add gapps, unless in monacle mode - no gapps/borders)
+   -#attachbelow (new windows spawns after marked window, not as master)
+   -#uselessgap   (add gapps, unless in monacle mode - no gapps/borders)
    - alwayscenter   (floating window spawns in center instead of corner)
 
-1.2 DWM Patching Example:
+7.3 DWM Patching Example:
 
 ```bash
 $ cd { SUCKLESS / DWM }            # Go to DWM source code directory
 $ cp config.h config.def.h         # Make a backup of the working config
+$ cp dwm.c dwm.def.c               # Make a backup of the DWM code
 $ patch -i patches/[patch.name]    # Patch DWM with the patch file
 $ sudo make clean install          # Recompile (refresh DWM after that)
 ```
 - Make sure to exit DWM [ALT + SHIFT + q] and log back in to see changes
 
-~~~~~~~~~6.POWER-MANAGEMENT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~8.POWER-MANAGEMENT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  _____  _      ____
 |_   _|| |    |  _ \    - When you install TLP on Arch linux,
   | |  | |    | |_) |     you only need to enable it once:
   | |  | |___ |  __/
-  |_|  |_____||_|          ```sudo systemctlenable tlp```
+  |_|  |_____||_|          ```sudo systemctl enable tlp```
 
 This command ensures that TLP starts automatically at boot. After
 enabling it, you do not need to run systemctl start tlp every time;
@@ -449,7 +452,7 @@ If you have any specific configurations you want to apply, you can edit
 the TLP configuration file at /etc/default/tlp.
 
 
-~~~~~~~~~7.BLUETOOTH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~9.BLUETOOTH~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. ```sudo pacman -S bluez bluez-utils blueman```
 
@@ -483,14 +486,14 @@ the TLP configuration file at /etc/default/tlp.
     \             to manuall start it each time.                 /
      \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
-~~~~~~~~~8.SCREEN-BRIGHTNESS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~10.SCREEN-BRIGHTNESS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         ___           - 'sudo pacman -S xorg-xbacklight'
     .-"`   `"-.
   .'           '.     nvim /suckless/dwm/config.h
  /               \
 /  #              \     
 | #               |
-|                 | /* Keybinfings for screen brightness*/ 
+|                 | /* Keybinfings for screen brightness */
 ;     .-~~~-.     ; { 0, XK_F5, spawn, SHCMD("xbacklight -dec 10") } 
 ;     .-~~~-.     ; { 0, XK_F6, spawn, SHCMD("xbacklight -inc 10") }
   \   (     )   /
@@ -506,7 +509,7 @@ the TLP configuration file at /etc/default/tlp.
       `""U""`
 
 
-~~~~~~~~~9.AI-(OLLAMA)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~11.AI-(OLLAMA)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                          Get ollama to run LLM's
                ---------------------------------------------
          ```   curl -fsSL https://ollama.com/install.sh | sh   ```
@@ -551,7 +554,7 @@ the TLP configuration file at /etc/default/tlp.
                               ```
 
    /++++++\
-<><10.FONTS><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+<><12.FONTS><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
    \++++++/
 
 add your fonts to ~/.local/share/fonts/
@@ -560,7 +563,7 @@ add your fonts to ~/.local/share/fonts/
 $ fc-cache -fv (to install them)
 
       /=====\                /=============\
--+===<-11.VM->==============<- VirtManager ->===========================
+-+===<-13.VM->==============<- VirtManager ->===========================
       \=====/                \=============/
 
 0. VirtualBox - pacman -S virtualbox dkms linux-headers
@@ -729,6 +732,49 @@ $ fc-cache -fv (to install them)
           # virtualization enabled.
 
 ~~~~~~~~~~~~~~~~~~~~
+      /=======\
+-+===<-14.SWAP->======================================================+-
+      \=======/
+
+   d888888o.  `8.`888b                 ,8' .8.          8 888888888o
+ .`8888:' `88. `8.`888b               ,8' .888.         8 8888    `88.
+ 8.`8888.   Y8  `8.`888b             ,8' :88888.        8 8888     `88
+ `8.`8888.       `8.`888b     .b    ,8' . `88888.       8 8888     ,88
+  `8.`8888.       `8.`888b    88b  ,8' .8. `88888.      8 8888.   ,88'
+   `8.`8888.       `8.`888b .`888b,8' .8`8. `88888.     8 888888888P'
+    `8.`8888.       `8.`888b8.`8888' .8' `8. `88888.    8 8888
+8b   `8.`8888.       `8.`888`8.`88' .8'   `8. `88888.   8 8888
+`8b.  ;8.`8888        `8.`8' `8,`' .888888888. `88888.  8 8888
+ `Y8888P ,88P'         `8.`   `8' .8'       `8. `88888. 8 8888
+                    ╔═══════════《✧✧》═══════════╗
+                    ▒   values are from 0-100,   █
+                    █ the higher the number, the ▒
+                    ▒ more agressive swappiness, █
+                    █  by default its high - 60  ▒
+                    ╚═══════════《✧✧》═══════════╝
+
+  To make swappiness setting permanent, so it persists
+  after a reboot, you can modify the `sysctl` configuration.
+  To do so, open the `sysctl` configuration file
+  ```/etc/sysctl.d/99-swappiness.conf``` in your preferred
+  text editor, and add the following line to the file:
+                                                     //==============\\
+     ##Replace №№ with your desired value##         ||vm.swappiness=№№||
+                                                     \\==============//
+
+  After saving the file, reload the configuration
+  to apply the changes immediately with the command:
+                                               //====================\\
+                                              ||$ sudo sysctl --system||
+                                               \\====================//
+
+  To verify that the swappiness value has
+  been changed permanently, you can run://===========================\\
+                                       ||$ cat /proc/sys/vm/swappiness||
+                                        \\===========================//
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 1. Generate the Required Locales
     uncomment `en_US.UTF-8 UTF-8`,`bg_BG.UTF-8 UTF-8` in /etc/locale.gen, then generate the locales by `sudo locale-gen`
